@@ -4,79 +4,296 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>📊 株クラ朝刊 2026年04月07日（火）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --primary: #1a1a2e; --accent: #e94560; --gold: #f5a623;
-    --bg: #0f0f1a; --card: #16213e; --text: #e0e0e0;
-    --muted: #8888aa; --border: #2a2a4a;
-  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; line-height: 1.7; }
-  header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 32px 20px 24px; text-align: center; border-bottom: 2px solid var(--accent); }
-  header h1 { font-size: clamp(1.4rem, 4vw, 2rem); color: #fff; letter-spacing: 0.05em; }
-  header h1 span { color: var(--gold); }
-  header p { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
-  .badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.7rem; padding: 2px 10px; border-radius: 20px; margin-top: 8px; letter-spacing: 0.08em; }
-  .container { max-width: 800px; margin: 0 auto; padding: 24px 16px 60px; }
-  .date-nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
-  .date-nav a { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px 16px; border-radius: 20px; font-size: 0.82rem; text-decoration: none; transition: all 0.2s; }
-  .date-nav a.active, .date-nav a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .trends-section { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 10px; padding: 20px; margin-bottom: 28px; }
-  .trends-section h2 { font-size: 1rem; color: var(--accent); margin-bottom: 14px; }
-  .trend-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .trend-tag { background: #1a1a3e; border: 1px solid var(--border); border-radius: 20px; padding: 4px 14px; font-size: 0.82rem; color: var(--text); text-decoration: none; transition: all 0.2s; }
-  .trend-tag:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .trend-tag .traffic { color: var(--gold); font-size: 0.72rem; margin-left: 4px; }
-  .news-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 20px; margin-bottom: 20px; transition: transform 0.2s, box-shadow 0.2s; }
-  .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(233,69,96,0.15); }
-  .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
-  .rank { background: linear-gradient(135deg, var(--accent), #c0392b); color: #fff; font-size: 1.1rem; font-weight: bold; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .rank.gold { background: linear-gradient(135deg, #f5a623, #e67e22); }
-  .rank.silver { background: linear-gradient(135deg, #bdc3c7, #95a5a6); color: #333; }
-  .rank.bronze { background: linear-gradient(135deg, #cd7f32, #a04000); }
+  body {
+    background: #ffffff;
+    color: #1a1a1a;
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+    line-height: 1.75;
+    font-size: 15px;
+  }
+  .page-header {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 28px 24px 20px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .page-header .meta {
+    margin-top: 6px;
+    font-size: 0.82rem;
+    color: #6b7280;
+  }
+  .page-header .desc {
+    margin-top: 4px;
+    font-size: 0.88rem;
+    color: #374151;
+  }
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 24px 80px;
+  }
+  .date-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .date-nav a {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .date-nav a.active {
+    background: #e94560;
+    border-color: #e94560;
+    color: #fff;
+    font-weight: 600;
+  }
+  .date-nav a:hover:not(.active) {
+    background: #e5e7eb;
+  }
+  /* トレンドセクション */
+  .trends-section {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #e94560;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+  }
+  .trends-section h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #e94560;
+    margin-bottom: 12px;
+  }
+  .trend-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .trend-tag {
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.8rem;
+    color: #374151;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .trend-tag:hover { background: #e94560; border-color: #e94560; color: #fff; }
+  .trend-tag .traffic { color: #f5a623; font-size: 0.72rem; margin-left: 4px; }
+  /* ニュースカード */
+  .news-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.15s;
+    background: #fff;
+  }
+  .news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .rank {
+    background: #e94560;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .rank.gold { background: #f5a623; }
+  .rank.silver { background: #9ca3af; }
+  .rank.bronze { background: #cd7f32; }
   .card-title { flex: 1; }
-  .category-badge { display: inline-block; font-size: 0.7rem; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; font-weight: bold; }
-  .cat-tax { background: #3d1a1a; color: #ff8080; border: 1px solid #ff4444; }
-  .cat-work { background: #1a2d1a; color: #80ff80; border: 1px solid #44aa44; }
-  .cat-price { background: #1a1a3d; color: #8080ff; border: 1px solid #4444ff; }
-  .cat-salary { background: #2d2d1a; color: #ffff80; border: 1px solid #aaaa44; }
-  .cat-nisa { background: #1a2d2d; color: #80ffff; border: 1px solid #44aaaa; }
-  .cat-market { background: #2d1a2d; color: #ff80ff; border: 1px solid #aa44aa; }
-  .cat-macro { background: #2d1a1a; color: #ffaa80; border: 1px solid #aa6644; }
-  .cat-z { background: #1a1a2d; color: #aaaaff; border: 1px solid #6666cc; }
-  .cat-default { background: #1a1a1a; color: #aaaaaa; border: 1px solid #555; }
-  .news-title { font-size: 0.95rem; font-weight: bold; color: #fff; line-height: 1.5; }
-  .score-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-  .score-label { font-size: 0.72rem; color: var(--muted); }
-  .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 1px; }
-  .summary { background: #0a0a1a; border-left: 3px solid var(--gold); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #ddd; margin-bottom: 12px; }
-  .hook { background: linear-gradient(135deg, #1a0a0a, #2a0a0a); border: 1px solid #cc3333; border-radius: 8px; padding: 12px 14px; font-size: 0.88rem; color: #ffcccc; margin-bottom: 12px; font-weight: bold; }
-  .hook::before { content: "🔥 Xフック文: "; color: var(--accent); }
-  .template { background: #0a1a0a; border: 1px solid #336633; border-radius: 8px; padding: 12px 14px; font-size: 0.85rem; color: #ccffcc; margin-bottom: 14px; font-style: italic; }
-  .template::before { content: "📝 投稿テンプレ: "; color: #66cc66; font-style: normal; font-weight: bold; }
-  .buzz-reason { font-size: 0.75rem; color: var(--muted); margin-bottom: 10px; }
-  .buzz-reason span { color: var(--gold); }
-  .card-links { display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 20px; font-size: 0.8rem; text-decoration: none; font-weight: bold; transition: all 0.2s; }
-  .btn-news { background: #1a3a5c; color: #7ab8ff; border: 1px solid #2a5a8c; }
-  .btn-news:hover { background: #2a5a8c; color: #fff; }
-  .btn-x { background: #1a1a1a; color: #aaa; border: 1px solid #333; }
-  .btn-x:hover { background: #333; color: #fff; }
-  .summary-section { background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 10px; padding: 24px 20px; margin-top: 32px; }
-  .summary-section h2 { color: var(--gold); margin-bottom: 16px; }
+  .category-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+  }
+  .cat-tax { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+  .cat-work { background: #dcfce7; color: #16a34a; border-color: #86efac; }
+  .cat-price { background: #dbeafe; color: #2563eb; border-color: #93c5fd; }
+  .cat-salary { background: #fef9c3; color: #ca8a04; border-color: #fde047; }
+  .cat-nisa { background: #cffafe; color: #0891b2; border-color: #67e8f9; }
+  .cat-market { background: #f3e8ff; color: #9333ea; border-color: #d8b4fe; }
+  .cat-macro { background: #ffedd5; color: #ea580c; border-color: #fdba74; }
+  .cat-z { background: #e0e7ff; color: #4338ca; border-color: #a5b4fc; }
+  .cat-default { background: #f3f4f6; color: #6b7280; border-color: #d1d5db; }
+  .news-title {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.55;
+  }
+  /* 情報テーブル */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.85rem;
+  }
+  .info-table td {
+    padding: 7px 10px;
+    border: 1px solid #e5e7eb;
+    vertical-align: top;
+  }
+  .info-table td:first-child {
+    width: 90px;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f9fafb;
+    white-space: nowrap;
+  }
+  .info-table td:last-child { color: #1a1a1a; }
+  .stars { color: #f5a623; }
+  /* 投稿テンプレセクション */
+  .template-section {
+    margin-top: 14px;
+    border-top: 1px dashed #e5e7eb;
+    padding-top: 14px;
+  }
+  .template-section h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #6b7280;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .template-box {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-left: 3px solid #e94560;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: #374151;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  /* リンクボタン */
+  .card-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.15s;
+    border: 1px solid;
+  }
+  .btn-news { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+  .btn-news:hover { background: #2563eb; color: #fff; }
+  .btn-x { background: #f9fafb; color: #374151; border-color: #d1d5db; }
+  .btn-x:hover { background: #111; color: #fff; border-color: #111; }
+  /* まとめセクション */
+  .tips-section {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-top: 32px;
+  }
+  .tips-section h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 14px;
+  }
   .tips { list-style: none; }
-  .tips li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; display: flex; gap: 10px; align-items: flex-start; }
+  .tips li {
+    padding: 8px 0;
+    border-bottom: 1px solid #fde68a;
+    font-size: 0.88rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: #374151;
+  }
   .tips li:last-child { border-bottom: none; }
-  .tip-num { background: var(--gold); color: #000; font-weight: bold; font-size: 0.75rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-  footer { text-align: center; padding: 20px; color: var(--muted); font-size: 0.75rem; border-top: 1px solid var(--border); }
+  .tip-num {
+    background: #f5a623;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.72rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 40px;
+  }
+  @media (max-width: 600px) {
+    .page-header, .container { padding-left: 16px; padding-right: 16px; }
+    .page-header h1 { font-size: 1.25rem; }
+    .info-table td:first-child { width: 70px; font-size: 0.78rem; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>📊 株クラ朝刊 <span>2026年04月07日（火）</span></h1>
-  <p>お金・働き方・投資の「今日の話題」をまとめました</p>
-  <span class="badge">毎朝8時配信 ｜ 株クラ初心者向けトレンドニュース10選</span>
-</header>
+<div class="page-header">
+  <h1>📊 株クラ朝刊 ── 2026年04月07日（火）</h1>
+  <div class="meta">毎朝8時配信｜株クラ初心者向けトレンドニュース10選</div>
+  <div class="desc">お金・働き方・投資の「今日の話題」をまとめました。Xの発信ネタにご活用ください。</div>
+</div>
 <div class="container">
   <div class="date-nav"><a href="20260407.html" class="active">2026/04/07</a><a href="20260406.html" class="">2026/04/06</a><a href="20260405.html" class="">2026/04/05</a></div>
   
@@ -89,15 +306,13 @@
       <div class="news-title">中山美穂 20億円遺産 息子相続放棄 11億円相続税 日本の相続税55％は世界一の悪法か</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(10/10)</span>
-  </div>
-  <div class="summary">中山美穂の遺産20億円、息子が相続放棄で11億円納税地獄</div>
-  <div class="hook">えっ！遺産20億円でも相続税で11億円も払うん？？</div>
-  <div class="buzz-reason">💡 バズる理由: <span>芸能人×巨額数字で自分ごと感強い</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>中山美穂の遺産20億円、息子が相続放棄で11億円納税地獄</td></tr>
+    <tr><td>Xフック文</td><td><strong>えっ！遺産20億円でも相続税で11億円も払うん？？</strong></td></tr>
+    <tr><td>バズる理由</td><td>芸能人×巨額数字で自分ごと感強い</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</span> (10/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1kX255RkNPTEV3Z0dpX3k1dmhaWnAyQmw5cEd0aGxlbmtFNWVYVTgyaDZGcUZpckhKWXdMU2Ztbl9JMERpRHNSc2VZVlpIZw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=中山美穂%20遺産&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -112,15 +327,13 @@
       <div class="news-title">退職する新入社員続出 初日に代行依頼殺到 「自分には向いてない」（テレビ朝日系（ANN））</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(9/10)</span>
-  </div>
-  <div class="summary">新入社員が入社初日に退職代行依頼、理由は企業の説明不足？</div>
-  <div class="hook">知らなかった！入社初日に退職代行頼む人が激増中らしい！</div>
-  <div class="buzz-reason">💡 バズる理由: <span>共感×炎上×働き方の疑問で話題性高い</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>新入社員が入社初日に退職代行依頼、理由は企業の説明不足？</td></tr>
+    <tr><td>Xフック文</td><td><strong>知らなかった！入社初日に退職代行頼む人が激増中らしい！</strong></td></tr>
+    <tr><td>バズる理由</td><td>共感×炎上×働き方の疑問で話題性高い</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span> (9/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9fYWJubWhxOFFhcG5FWmVEYUVBQzVPYk1tQWNRcXktTHAwNWZLalBWdkVrOXg0dFdqVnZnNlBsRUdibE5OU1FCT3k3Q25ZOFczaW81c090TjgzLXduQlZJTnVGaV9UMUc3M2VvcjBvODllUzdaWU5BWk4zRVcyeUE?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=退職代行%20新入社員&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -135,15 +348,13 @@
       <div class="news-title">【独身世帯の貯蓄格差】3割超が金融資産ゼロ？60代の中央値300万円、単身シニア家計は月約2.8万円の赤字も（LIMO）</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(9/10)</span>
-  </div>
-  <div class="summary">独身世帯3割超が金融資産ゼロ、60代単身は月約2.8万円赤字も</div>
-  <div class="hook">知らなかった！独身の3割が貯金ゼロで60代は赤字家計？</div>
-  <div class="buzz-reason">💡 バズる理由: <span>驚きの数字×生活直結で共感広がる</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>独身世帯3割超が金融資産ゼロ、60代単身は月約2.8万円赤字も</td></tr>
+    <tr><td>Xフック文</td><td><strong>知らなかった！独身の3割が貯金ゼロで60代は赤字家計？</strong></td></tr>
+    <tr><td>バズる理由</td><td>驚きの数字×生活直結で共感広がる</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span> (9/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE95UlZ0ZU1NSUI1RlpFdnZIa2R1TDI4X3QtNmlzbzJQaTktVzFCYmE1S1BlLUFYSWd1RnduTFA4RjdicEJjNVA2OFFGWU9LaU51S3d3TUUwQTdDMGtvUHNUMlN6TEdVZ0JfTnF3Y09LQW9DMjY4dEdwdTh4N3ZvMG8?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=貯蓄ゼロ%20独身&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -158,15 +369,13 @@
       <div class="news-title">４月から大きく変わる暮らしの税制…所得税の「年収の壁」引き上げ、加熱式たばこの税率アップ（読売新聞オンライン）</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">4月から所得税の年収の壁引き上げ、加熱式たばこ税アップ</div>
-  <div class="hook">えっ！4月から年収の壁が引き上げで手取り変わるん？</div>
-  <div class="buzz-reason">💡 バズる理由: <span>知らないと損する制度変更で注目度高い</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>4月から所得税の年収の壁引き上げ、加熱式たばこ税アップ</td></tr>
+    <tr><td>Xフック文</td><td><strong>えっ！4月から年収の壁が引き上げで手取り変わるん？</strong></td></tr>
+    <tr><td>バズる理由</td><td>知らないと損する制度変更で注目度高い</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1SbjAwMHJucmthWENfTnBtZk1JUjA4Y3d5MTF0SC1RSVhwYlZYQ3ppSF9laTFzNE5ib0RkWHZKRXFqelVpWE9FaVFQaDlJQ09SUkJxaDBwaHlkS01pN2tSeHdyelIzSnZGWS15Y00tUUhtdEh5amYtaldXV0NvN3M?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=年収の壁%20変更&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -181,15 +390,13 @@
       <div class="news-title">やっぱり｢銀行に預けっぱなし｣は損…360万円を｢貯金した人｣と｢投資した人｣で30年後に生じる&quot;格差&quot;</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">銀行預けっぱなしは損、30年で360万円の差が出る格差</div>
-  <div class="hook">えっ！銀行に預けるだけで30年後に360万円も損するん？</div>
-  <div class="buzz-reason">💡 バズる理由: <span>驚きの数字×貯蓄の損失で注目度高い</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>銀行預けっぱなしは損、30年で360万円の差が出る格差</td></tr>
+    <tr><td>Xフック文</td><td><strong>えっ！銀行に預けるだけで30年後に360万円も損するん？</strong></td></tr>
+    <tr><td>バズる理由</td><td>驚きの数字×貯蓄の損失で注目度高い</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTFBKZjFlU282cFhVd2p5RVIzcV9UNTQyLWhBc0lhbVNBRTVKb3E0bk43V2c4azJwc05tT2ZwZnBTX19TeGxlZmJWYi1pNUNrTFNTb2JNdkJQRTQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=銀行%20預け損&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -204,15 +411,13 @@
       <div class="news-title">約3人に1人が「職場はブラック企業」と回答、辞めたいのに辞めないのはなぜ？</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">約3人に1人が職場をブラック企業だと回答、辞めたいけど辞めない理由は？</div>
-  <div class="hook">知らなかった！3人に1人がブラック企業勤務ってマジ？</div>
-  <div class="buzz-reason">💡 バズる理由: <span>共感×炎上×働き方問題で反響大</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>約3人に1人が職場をブラック企業だと回答、辞めたいけど辞めない理由は？</td></tr>
+    <tr><td>Xフック文</td><td><strong>知らなかった！3人に1人がブラック企業勤務ってマジ？</strong></td></tr>
+    <tr><td>バズる理由</td><td>共感×炎上×働き方問題で反響大</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTE1McW5jSUJ5MzVLUHZqZjRhNzlpWFk4YzlDSjYwMzhUV2RkeTExcmp0QmxzSzk0SWNpTnBYZHpLWXB1dnFoZWxGNjkzam15VHZIdTdCTTNqSQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=ブラック企業%20辞めない&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -227,15 +432,13 @@
       <div class="news-title">「初日退職」激増 退職代行に新入社員殺到、浮かび上がる企業の説明不足と就職観の変化</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">新入社員の初日退職代行が増加、企業説明不足と就職観の変化</div>
-  <div class="hook">えっ！新入社員の初日退職代行が激増中ってホンマ？</div>
-  <div class="buzz-reason">💡 バズる理由: <span>炎上×共感×働き方の疑問で注目</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>新入社員の初日退職代行が増加、企業説明不足と就職観の変化</td></tr>
+    <tr><td>Xフック文</td><td><strong>えっ！新入社員の初日退職代行が激増中ってホンマ？</strong></td></tr>
+    <tr><td>バズる理由</td><td>炎上×共感×働き方の疑問で注目</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9ycnk5Nm1MZVNBR0IydzhUTmplZ1ZobVpLMWl4Nl9pMGVlWEV3aUUwTTJzdXF2NjdTUURVUEJkanFyNmJzRlRLM2IxbVNRUQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=初日%20退職代行&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -250,15 +453,13 @@
       <div class="news-title">「約2000万円の退職金をもらい…2億円ほどの資産を築いていたのに」老後破産した夫婦の衝撃事例</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">退職金2000万あっても老後破産、2億円資産築くも破綻事例</div>
-  <div class="hook">えっ！2億円持ってても老後破産する夫婦がいるらしい！</div>
-  <div class="buzz-reason">💡 バズる理由: <span>巨額資産でも破産の驚きで注目</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>退職金2000万あっても老後破産、2億円資産築くも破綻事例</td></tr>
+    <tr><td>Xフック文</td><td><strong>えっ！2億円持ってても老後破産する夫婦がいるらしい！</strong></td></tr>
+    <tr><td>バズる理由</td><td>巨額資産でも破産の驚きで注目</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTE1FWFZjYzh5Vzk2UkpUR0lJdTlOZzRWRUJ5bHhkS3ZTRWxIa0lJVFFfN0ptRmtGcmoyOGhwSmMwR0l5ZEE?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=老後破産%202億円&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -273,15 +474,13 @@
       <div class="news-title">「食費がどんどん上がって家計が苦しいです」年収550万円・46歳シングルマザーのリアルな収支内訳</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(7/10)</span>
-  </div>
-  <div class="summary">年収550万シングルマザー、食費値上げで家計苦しい実態</div>
-  <div class="hook">これは怒る！年収550万でも食費値上げで家計が苦しいって本当？</div>
-  <div class="buzz-reason">💡 バズる理由: <span>生活直撃×共感で話題になる</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>年収550万シングルマザー、食費値上げで家計苦しい実態</td></tr>
+    <tr><td>Xフック文</td><td><strong>これは怒る！年収550万でも食費値上げで家計が苦しいって本当？</strong></td></tr>
+    <tr><td>バズる理由</td><td>生活直撃×共感で話題になる</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMieEFVX3lxTFBOOGRmWEVobTAzX245cFg4RjNSQmp5aFRyallocm11RTJSRjBEYVc2QVQ0bmR2c3A3RHFQblktMTZIOERnQ0QydldkUUROMGZJZTctVnpfTmdmdUZyTzJhdGdDZjZtVUhuZ2JhWjFFb0JjTEFDaVJYNtIBfkFVX3lxTFBZYUktbWQzejVCcDRmQmVRQm5XbkEzSDdUMmdEZ1NSX2JSZG5sNHZZM19xOE1JTTZoQ1MyS0p6VzBSTmFTN3dxT2pzZmIzMGtwWWRxRGdfNUR6amVQdFozdXFhbUxGMDlvS04xTlQ5VVlNTW5nUF9EWlRTTGpndw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=食費%20値上げ&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -296,21 +495,19 @@
       <div class="news-title">4月こう変わる 車の環境性能割廃止/食料品や電気値上げ</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(7/10)</span>
-  </div>
-  <div class="summary">4月から車の環境性能割廃止、食料品や電気代が値上げへ</div>
-  <div class="hook">知らなかった！4月から電気代も食料品も値上げになるらしい！</div>
-  <div class="buzz-reason">💡 バズる理由: <span>生活直撃の値上げで共感呼ぶ</span></div>
-  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>4月から車の環境性能割廃止、食料品や電気代が値上げへ</td></tr>
+    <tr><td>Xフック文</td><td><strong>知らなかった！4月から電気代も食料品も値上げになるらしい！</strong></td></tr>
+    <tr><td>バズる理由</td><td>生活直撃の値上げで共感呼ぶ</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5hNlgzZHE0dHM5ZmRQZXFJbjJlaDNmblZFMl9kdnZmZkpiU3JuVk5QYUpjQWlxbjgtam55Vy1CcEQ2c3dkdzF5cVRPbXk3Z0hTOXpNNVA1U0c5UWhFako2eWdjQnRMblZoQUp1VA?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=電気代%20値上げ&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
   </div>
 </div>
-  <div class="summary-section">
+  <div class="tips-section">
     <h2>📌 バズ投稿を作る3つのコツ</h2>
     <ul class="tips">
       <li><span class="tip-num">1</span><span>冒頭に<strong>「私も〇〇だった」という共感ストーリー</strong>を入れると伸びやすい</span></li>

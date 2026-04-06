@@ -4,79 +4,296 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>📊 株クラ朝刊 2026年04月05日（日）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --primary: #1a1a2e; --accent: #e94560; --gold: #f5a623;
-    --bg: #0f0f1a; --card: #16213e; --text: #e0e0e0;
-    --muted: #8888aa; --border: #2a2a4a;
-  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; line-height: 1.7; }
-  header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 32px 20px 24px; text-align: center; border-bottom: 2px solid var(--accent); }
-  header h1 { font-size: clamp(1.4rem, 4vw, 2rem); color: #fff; letter-spacing: 0.05em; }
-  header h1 span { color: var(--gold); }
-  header p { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
-  .badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.7rem; padding: 2px 10px; border-radius: 20px; margin-top: 8px; letter-spacing: 0.08em; }
-  .container { max-width: 800px; margin: 0 auto; padding: 24px 16px 60px; }
-  .date-nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
-  .date-nav a { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px 16px; border-radius: 20px; font-size: 0.82rem; text-decoration: none; transition: all 0.2s; }
-  .date-nav a.active, .date-nav a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .trends-section { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 10px; padding: 20px; margin-bottom: 28px; }
-  .trends-section h2 { font-size: 1rem; color: var(--accent); margin-bottom: 14px; }
-  .trend-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .trend-tag { background: #1a1a3e; border: 1px solid var(--border); border-radius: 20px; padding: 4px 14px; font-size: 0.82rem; color: var(--text); text-decoration: none; transition: all 0.2s; }
-  .trend-tag:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .trend-tag .traffic { color: var(--gold); font-size: 0.72rem; margin-left: 4px; }
-  .news-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 20px; margin-bottom: 20px; transition: transform 0.2s, box-shadow 0.2s; }
-  .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(233,69,96,0.15); }
-  .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
-  .rank { background: linear-gradient(135deg, var(--accent), #c0392b); color: #fff; font-size: 1.1rem; font-weight: bold; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .rank.gold { background: linear-gradient(135deg, #f5a623, #e67e22); }
-  .rank.silver { background: linear-gradient(135deg, #bdc3c7, #95a5a6); color: #333; }
-  .rank.bronze { background: linear-gradient(135deg, #cd7f32, #a04000); }
+  body {
+    background: #ffffff;
+    color: #1a1a1a;
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+    line-height: 1.75;
+    font-size: 15px;
+  }
+  .page-header {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 28px 24px 20px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .page-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .page-header .meta {
+    margin-top: 6px;
+    font-size: 0.82rem;
+    color: #6b7280;
+  }
+  .page-header .desc {
+    margin-top: 4px;
+    font-size: 0.88rem;
+    color: #374151;
+  }
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 24px 80px;
+  }
+  .date-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .date-nav a {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .date-nav a.active {
+    background: #e94560;
+    border-color: #e94560;
+    color: #fff;
+    font-weight: 600;
+  }
+  .date-nav a:hover:not(.active) {
+    background: #e5e7eb;
+  }
+  /* トレンドセクション */
+  .trends-section {
+    background: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #e94560;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+  }
+  .trends-section h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #e94560;
+    margin-bottom: 12px;
+  }
+  .trend-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .trend-tag {
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 0.8rem;
+    color: #374151;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .trend-tag:hover { background: #e94560; border-color: #e94560; color: #fff; }
+  .trend-tag .traffic { color: #f5a623; font-size: 0.72rem; margin-left: 4px; }
+  /* ニュースカード */
+  .news-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.15s;
+    background: #fff;
+  }
+  .news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  .rank {
+    background: #e94560;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .rank.gold { background: #f5a623; }
+  .rank.silver { background: #9ca3af; }
+  .rank.bronze { background: #cd7f32; }
   .card-title { flex: 1; }
-  .category-badge { display: inline-block; font-size: 0.7rem; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; font-weight: bold; }
-  .cat-tax { background: #3d1a1a; color: #ff8080; border: 1px solid #ff4444; }
-  .cat-work { background: #1a2d1a; color: #80ff80; border: 1px solid #44aa44; }
-  .cat-price { background: #1a1a3d; color: #8080ff; border: 1px solid #4444ff; }
-  .cat-salary { background: #2d2d1a; color: #ffff80; border: 1px solid #aaaa44; }
-  .cat-nisa { background: #1a2d2d; color: #80ffff; border: 1px solid #44aaaa; }
-  .cat-market { background: #2d1a2d; color: #ff80ff; border: 1px solid #aa44aa; }
-  .cat-macro { background: #2d1a1a; color: #ffaa80; border: 1px solid #aa6644; }
-  .cat-z { background: #1a1a2d; color: #aaaaff; border: 1px solid #6666cc; }
-  .cat-default { background: #1a1a1a; color: #aaaaaa; border: 1px solid #555; }
-  .news-title { font-size: 0.95rem; font-weight: bold; color: #fff; line-height: 1.5; }
-  .score-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-  .score-label { font-size: 0.72rem; color: var(--muted); }
-  .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 1px; }
-  .summary { background: #0a0a1a; border-left: 3px solid var(--gold); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #ddd; margin-bottom: 12px; }
-  .hook { background: linear-gradient(135deg, #1a0a0a, #2a0a0a); border: 1px solid #cc3333; border-radius: 8px; padding: 12px 14px; font-size: 0.88rem; color: #ffcccc; margin-bottom: 12px; font-weight: bold; }
-  .hook::before { content: "🔥 Xフック文: "; color: var(--accent); }
-  .template { background: #0a1a0a; border: 1px solid #336633; border-radius: 8px; padding: 12px 14px; font-size: 0.85rem; color: #ccffcc; margin-bottom: 14px; font-style: italic; }
-  .template::before { content: "📝 投稿テンプレ: "; color: #66cc66; font-style: normal; font-weight: bold; }
-  .buzz-reason { font-size: 0.75rem; color: var(--muted); margin-bottom: 10px; }
-  .buzz-reason span { color: var(--gold); }
-  .card-links { display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 20px; font-size: 0.8rem; text-decoration: none; font-weight: bold; transition: all 0.2s; }
-  .btn-news { background: #1a3a5c; color: #7ab8ff; border: 1px solid #2a5a8c; }
-  .btn-news:hover { background: #2a5a8c; color: #fff; }
-  .btn-x { background: #1a1a1a; color: #aaa; border: 1px solid #333; }
-  .btn-x:hover { background: #333; color: #fff; }
-  .summary-section { background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 10px; padding: 24px 20px; margin-top: 32px; }
-  .summary-section h2 { color: var(--gold); margin-bottom: 16px; }
+  .category-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+  }
+  .cat-tax { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+  .cat-work { background: #dcfce7; color: #16a34a; border-color: #86efac; }
+  .cat-price { background: #dbeafe; color: #2563eb; border-color: #93c5fd; }
+  .cat-salary { background: #fef9c3; color: #ca8a04; border-color: #fde047; }
+  .cat-nisa { background: #cffafe; color: #0891b2; border-color: #67e8f9; }
+  .cat-market { background: #f3e8ff; color: #9333ea; border-color: #d8b4fe; }
+  .cat-macro { background: #ffedd5; color: #ea580c; border-color: #fdba74; }
+  .cat-z { background: #e0e7ff; color: #4338ca; border-color: #a5b4fc; }
+  .cat-default { background: #f3f4f6; color: #6b7280; border-color: #d1d5db; }
+  .news-title {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.55;
+  }
+  /* 情報テーブル */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.85rem;
+  }
+  .info-table td {
+    padding: 7px 10px;
+    border: 1px solid #e5e7eb;
+    vertical-align: top;
+  }
+  .info-table td:first-child {
+    width: 90px;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f9fafb;
+    white-space: nowrap;
+  }
+  .info-table td:last-child { color: #1a1a1a; }
+  .stars { color: #f5a623; }
+  /* 投稿テンプレセクション */
+  .template-section {
+    margin-top: 14px;
+    border-top: 1px dashed #e5e7eb;
+    padding-top: 14px;
+  }
+  .template-section h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #6b7280;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .template-box {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-left: 3px solid #e94560;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: #374151;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  /* リンクボタン */
+  .card-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.15s;
+    border: 1px solid;
+  }
+  .btn-news { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+  .btn-news:hover { background: #2563eb; color: #fff; }
+  .btn-x { background: #f9fafb; color: #374151; border-color: #d1d5db; }
+  .btn-x:hover { background: #111; color: #fff; border-color: #111; }
+  /* まとめセクション */
+  .tips-section {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-top: 32px;
+  }
+  .tips-section h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 14px;
+  }
   .tips { list-style: none; }
-  .tips li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; display: flex; gap: 10px; align-items: flex-start; }
+  .tips li {
+    padding: 8px 0;
+    border-bottom: 1px solid #fde68a;
+    font-size: 0.88rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: #374151;
+  }
   .tips li:last-child { border-bottom: none; }
-  .tip-num { background: var(--gold); color: #000; font-weight: bold; font-size: 0.75rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-  footer { text-align: center; padding: 20px; color: var(--muted); font-size: 0.75rem; border-top: 1px solid var(--border); }
+  .tip-num {
+    background: #f5a623;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.72rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: #9ca3af;
+    font-size: 0.75rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 40px;
+  }
+  @media (max-width: 600px) {
+    .page-header, .container { padding-left: 16px; padding-right: 16px; }
+    .page-header h1 { font-size: 1.25rem; }
+    .info-table td:first-child { width: 70px; font-size: 0.78rem; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <h1>📊 株クラ朝刊 <span>2026年04月05日（日）</span></h1>
-  <p>お金・働き方・投資の「今日の話題」をまとめました</p>
-  <span class="badge">毎朝8時配信 ｜ 株クラ初心者向けトレンドニュース10選</span>
-</header>
+<div class="page-header">
+  <h1>📊 株クラ朝刊 ── 2026年04月05日（日）</h1>
+  <div class="meta">毎朝8時配信｜株クラ初心者向けトレンドニュース10選</div>
+  <div class="desc">お金・働き方・投資の「今日の話題」をまとめました。Xの発信ネタにご活用ください。</div>
+</div>
 <div class="container">
   <div class="date-nav"><a href="20260407.html" class="">2026/04/07</a><a href="20260406.html" class="">2026/04/06</a><a href="20260405.html" class="active">2026/04/05</a></div>
   
@@ -89,15 +306,13 @@
       <div class="news-title">「初日退職」激増 退職代行に新入社員殺到、浮かび上がる企業の説明不足と就職観の変化</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(9/10)</span>
-  </div>
-  <div class="summary">新入社員の初日退職が激増、企業説明の限界が露呈</div>
-  <div class="hook">「入社初日に辞めたい」新人続出！ブラック企業より“説明不足”が若者を追い詰める現実</div>
-  <div class="buzz-reason">💡 バズる理由: <span>働き方への怒りと不安が共感を呼ぶ</span></div>
-  <div class="template">私も初日退職を考えた新人時代がありました。会社の説明不足に絶望して、働き方を見直すきっかけに。だからこそ投資で自立が必要なんです。</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>新入社員の初日退職が激増、企業説明の限界が露呈</td></tr>
+    <tr><td>Xフック文</td><td><strong>「入社初日に辞めたい」新人続出！ブラック企業より“説明不足”が若者を追い詰める現実</strong></td></tr>
+    <tr><td>バズる理由</td><td>働き方への怒りと不安が共感を呼ぶ</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span> (9/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も初日退職を考えた新人時代がありました。会社の説明不足に絶望して、働き方を見直すきっかけに。だからこそ投資で自立が必要なんです。</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9ycnk5Nm1MZVNBR0IydzhUTmplZ1ZobVpLMWl4Nl9pMGVlWEV3aUUwTTJzdXF2NjdTUURVUEJkanFyNmJzRlRLM2IxbVNRUQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=初日退職&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -112,15 +327,13 @@
       <div class="news-title">令和7年、経理部で囁かれた「来年から健康保険料増・手取り大幅減」の悲報…大増税時代、サラリーマンの首がじわじわ絞められるニッポン【税理士が解</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(9/10)</span>
-  </div>
-  <div class="summary">令和7年、健康保険料増で手取りが大幅減の悲報が囁かれる</div>
-  <div class="hook">健康保険料アップでサラリーマンの手取りがじわじわ減る…大増税時代、もう我慢できない！</div>
-  <div class="buzz-reason">💡 バズる理由: <span>手取り減で生活不安が直撃</span></div>
-  <div class="template">私も手取り減で生活が苦しかった時期があります。増税の波は誰にも止められないから、投資で資産を増やすしかないんです。</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>令和7年、健康保険料増で手取りが大幅減の悲報が囁かれる</td></tr>
+    <tr><td>Xフック文</td><td><strong>健康保険料アップでサラリーマンの手取りがじわじわ減る…大増税時代、もう我慢できない！</strong></td></tr>
+    <tr><td>バズる理由</td><td>手取り減で生活不安が直撃</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span> (9/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も手取り減で生活が苦しかった時期があります。増税の波は誰にも止められないから、投資で資産を増やすしかないんです。</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFBJQTRsbWstbVNGWVVuMUJsVnBFUVJ4YmpSRGhLZVJqcjVUTGZiMnJONWNxRW9CY3F4NUhOaW8wWDlNVGMxMTVMRzU4OW1nZWNQZWc?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=健康保険料&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -135,15 +348,13 @@
       <div class="news-title">「11月から鶏肉1.5倍値上がり」止まらぬ円安 一時1ドル159円台に…解散風で加速する“高市トレード”が家計直撃 専門家「円安加速すると物</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(9/10)</span>
-  </div>
-  <div class="summary">鶏肉1.5倍値上がり、円安が家計を直撃する現実</div>
-  <div class="hook">11月から鶏肉1.5倍値上がり！円安で物価高が止まらず、生活が苦しいと怒りの声続出</div>
-  <div class="buzz-reason">💡 バズる理由: <span>物価高で生活実感が強い</span></div>
-  <div class="template">私も食費が急増して生活が苦しくなりました。物価高は止まらないから、投資で資産形成しないと将来が不安です。</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>鶏肉1.5倍値上がり、円安が家計を直撃する現実</td></tr>
+    <tr><td>Xフック文</td><td><strong>11月から鶏肉1.5倍値上がり！円安で物価高が止まらず、生活が苦しいと怒りの声続出</strong></td></tr>
+    <tr><td>バズる理由</td><td>物価高で生活実感が強い</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span> (9/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も食費が急増して生活が苦しくなりました。物価高は止まらないから、投資で資産形成しないと将来が不安です。</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTFBxUF9yLXo0MHhQQ3NJNkpBMlk2VFlUNk5pYU5LV3JIS3hjWTI2UzJwdEhzRjNoM0N1UnVtVjFRZ1RKMEFnMDRNUnpUZmxBTndjdkRmdDJHVQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=物価高騰&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -158,15 +369,13 @@
       <div class="news-title">退職する新入社員続出 初日に代行依頼殺到 「自分には向いてない」（テレビ朝日系（ANN））</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">初日に退職代行依頼が殺到、若者の働き方への疑問増大</div>
-  <div class="hook">「自分には向いてない」入社初日で退職代行依頼が急増！若者の働き方不安が爆発中</div>
-  <div class="buzz-reason">💡 バズる理由: <span>若者の働き方不満が強く刺さる</span></div>
-  <div class="template">私も初日で辞めたい気持ちを抱えたことがあります。働き方の不透明さに不安を感じるなら、資産形成で自分の未来を守りましょう。</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>初日に退職代行依頼が殺到、若者の働き方への疑問増大</td></tr>
+    <tr><td>Xフック文</td><td><strong>「自分には向いてない」入社初日で退職代行依頼が急増！若者の働き方不安が爆発中</strong></td></tr>
+    <tr><td>バズる理由</td><td>若者の働き方不満が強く刺さる</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も初日で辞めたい気持ちを抱えたことがあります。働き方の不透明さに不安を感じるなら、資産形成で自分の未来を守りましょう。</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9fYWJubWhxOFFhcG5FWmVEYUVBQzVPYk1tQWNRcXktTHAwNWZLalBWdkVrOXg0dFdqVnZnNlBsRUdibE5OU1FCT3k3Q25ZOFczaW81c090TjgzLXduQlZJTnVGaV9UMUc3M2VvcjBvODllUzdaWU5BWk4zRVcyeUE?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=退職代行&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -181,15 +390,13 @@
       <div class="news-title">結局「手取り」はどうなる？ 税制改正「年収178万円の壁」と「防衛増税」が家計に与える影響</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">税制改正で年収178万円の壁が拡大、家計に影響大</div>
-  <div class="hook">年収178万円の壁が拡大！税制改正で手取り減、家計はもう限界か？</div>
-  <div class="buzz-reason">💡 バズる理由: <span>具体的数字で生活の不安を刺激</span></div>
-  <div class="template">私も年収の壁で手取りが減り焦りました。制度に頼れない今、投資で収入源を増やすことが必要だと痛感しています。</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>税制改正で年収178万円の壁が拡大、家計に影響大</td></tr>
+    <tr><td>Xフック文</td><td><strong>年収178万円の壁が拡大！税制改正で手取り減、家計はもう限界か？</strong></td></tr>
+    <tr><td>バズる理由</td><td>具体的数字で生活の不安を刺激</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も年収の壁で手取りが減り焦りました。制度に頼れない今、投資で収入源を増やすことが必要だと痛感しています。</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiWEFVX3lxTFA4VkRHekpzc0tkbDJYTlBtWlpNbzJHZXI0UmR6U3hmV0U4U0VnRUxQME9SeHAzTFRQZUJURC1HNWdKSWE4ZVZQekFaTlNFeDdOYURYMmh4SEg?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=年収の壁&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -204,15 +411,13 @@
       <div class="news-title">給与月5,000円アップも絶望…〈月収50万円〉中小企業勤務・45歳男性が嘆く「賃上げ」の虚しさ。厚労省調査で見えた「手取りのリアル」と格差</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">月収50万円でも賃上げ実感なし、手取り格差が浮き彫りに</div>
-  <div class="hook">月収50万円でも絶望…賃上げは形だけで手取りは増えず、格差は拡大するばかり！</div>
-  <div class="buzz-reason">💡 バズる理由: <span>給与格差のリアルに共感殺到</span></div>
-  <div class="template">私も賃上げしても手取り変わらず虚しさを感じました。制度の限界を知り、投資で自分の資産を守る決意をしました。</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>月収50万円でも賃上げ実感なし、手取り格差が浮き彫りに</td></tr>
+    <tr><td>Xフック文</td><td><strong>月収50万円でも絶望…賃上げは形だけで手取りは増えず、格差は拡大するばかり！</strong></td></tr>
+    <tr><td>バズる理由</td><td>給与格差のリアルに共感殺到</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も賃上げしても手取り変わらず虚しさを感じました。制度の限界を知り、投資で自分の資産を守る決意をしました。</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTFBXSTZyazBOVGNEZEZ5VFBvMVFHekN4cTBaVl9KeXdjUU9fZWh0c0szRllrOTBReVRZWnd4LXNGSHdwRURzZGp1MC1KZ2hTTVJuM1IxeUxYRHBuZGtkUmd5SmpsZUJnZlY5Rl9GdFlqYzVFY0g0TWJBckxDNFRvRWs?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=賃上げ格差&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -227,15 +432,13 @@
       <div class="news-title">【NISA】個人投資家は「NISA口座」で何を買っているのか？ 4人のザイ読者が実際につみたて投資している投資信託、新NISA開始以降の2年</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">新NISA開始後の2年間、実際の投資信託収益を公開</div>
-  <div class="hook">新NISAの2年成果公開！投資初心者でもこんなに稼げる？実例で見る資産形成の現実</div>
-  <div class="buzz-reason">💡 バズる理由: <span>実例が初心者の背中を押す</span></div>
-  <div class="template">私も新NISAで少額から始めて2年で収益を実感。投資は難しくない、まずは一歩踏み出す勇気が大事です！</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>新NISA開始後の2年間、実際の投資信託収益を公開</td></tr>
+    <tr><td>Xフック文</td><td><strong>新NISAの2年成果公開！投資初心者でもこんなに稼げる？実例で見る資産形成の現実</strong></td></tr>
+    <tr><td>バズる理由</td><td>実例が初心者の背中を押す</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も新NISAで少額から始めて2年で収益を実感。投資は難しくない、まずは一歩踏み出す勇気が大事です！</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE9rSlg1ZEVjY1lBOWx1QWI1LVhVZF9UNWEzTnFXcm9YM0oyamFJQThPTDlmaTM3TUlodDZNQWQ5NG85QVlPMUJPR240aFhZSkFPeWxVbTloY2ltakJQa24zWTlaSDVZRE9aMzBJM21Bc1RMNTNNQ1U5c0w2V3JWUnM?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=新NISA実績&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -250,15 +453,13 @@
       <div class="news-title">家計が｢値上げを受け入れる日｣は本当に来るのか</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(8/10)</span>
-  </div>
-  <div class="summary">家計が値上げを受け入れる日は本当に来るのか？生活実感の不安</div>
-  <div class="hook">値上げが当たり前に？家計が限界を感じる今、投資で未来を守るしかない！</div>
-  <div class="buzz-reason">💡 バズる理由: <span>生活への不安が初心者に刺さる</span></div>
-  <div class="template">私も値上げラッシュに生活が圧迫されました。投資を始めて初めて未来に希望が持てたんです。みんなで資産形成を始めませんか？</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>家計が値上げを受け入れる日は本当に来るのか？生活実感の不安</td></tr>
+    <tr><td>Xフック文</td><td><strong>値上げが当たり前に？家計が限界を感じる今、投資で未来を守るしかない！</strong></td></tr>
+    <tr><td>バズる理由</td><td>生活への不安が初心者に刺さる</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も値上げラッシュに生活が圧迫されました。投資を始めて初めて未来に希望が持てたんです。みんなで資産形成を始めませんか？</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMi_wJBVV95cUxNZGl1Z043WnpuM3RqXzN2RW1pa2xFN1dac1lqVEJVV3Q0Mmd5V2xiSkxOOWtzUVhLYV9lSWFKTEhJaGhqS0stQ0FXNm1yclgxVGdXY20xdjJVT0NvVGxlOTNhT05iZnRWSm10QkZFbndEekJyU0xfQVR1MG1fVUdPMXloMlhnYXZrWjFrZURpS2prVXI2aVRxbjFxTTNWS3R1bEZZZ0xTdmEtRWtUaWhoRTFmUE5WVjJfbThEMkU4YTZQMzJTQjVsM3BsbXZMR2Q5NjA4UzJFM0JpWi03d3I5Y1c4bmkwb3l0ZWdiQmt2WUp6R2tiaDJ1bDMtekFYZVphSzRLYlF6SEJteFdqZU5PZ3d4dzVOV1RBYV9tU3gtN0w1Ymh5ODVPejJxcmZwQV9lNTRKLXAyLWlXdXN5Yno1cUM2b3NJT2JpT25nM3VQSHltc2Z3dUE2bjZwRm9Vdm9DeGtMUV93QVdWZU5OZktrSVNXWGh0Snk0d3lBcE1kcw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=値上げ生活&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -273,15 +474,13 @@
       <div class="news-title">【NISA】2026年は｢オルカン｣や｢S&amp;P500｣に負けない好成績を誇る｢日経平均高配当株50インデックス｣に注目！“日経平均5万円時代</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(7/10)</span>
-  </div>
-  <div class="summary">2026年注目の高配当日経平均株50インデックスで資産形成</div>
-  <div class="hook">NISAで狙う！2026年は日経平均高配当株50に注目、資産を守り増やすチャンス到来！</div>
-  <div class="buzz-reason">💡 バズる理由: <span>具体的投資戦略で初心者に刺さる</span></div>
-  <div class="template">私も投資初心者で迷いましたが、高配当株に注目して資産形成を始めました。不安な時代だからこそ、賢く増やしたいですよね。</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>2026年注目の高配当日経平均株50インデックスで資産形成</td></tr>
+    <tr><td>Xフック文</td><td><strong>NISAで狙う！2026年は日経平均高配当株50に注目、資産を守り増やすチャンス到来！</strong></td></tr>
+    <tr><td>バズる理由</td><td>具体的投資戦略で初心者に刺さる</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私も投資初心者で迷いましたが、高配当株に注目して資産形成を始めました。不安な時代だからこそ、賢く増やしたいですよね。</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE15YmZHWDNzaHVWTHVQaTMxTDhPSFRRNTBuS2VxN0l4NlptWTE0TkhVbk82UFo5VnVCLWt6N0xqMEtfTk9xSUVfN3ZQUHBUcnRQVzQ4?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=高配当株&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
@@ -296,21 +495,19 @@
       <div class="news-title">若者が恐れるのは「ブラック企業よりパープル企業」</div>
     </div>
   </div>
-  <div class="score-bar">
-    <span class="score-label">バズスコア</span>
-    <span class="stars">⭐⭐⭐⭐⭐⭐⭐</span>
-    <span class="score-label">(7/10)</span>
-  </div>
-  <div class="summary">Z世代が恐れるのはブラック企業より“パープル企業”の不安定さ</div>
-  <div class="hook">若者が恐れるのはブラック企業じゃない？“パープル企業”の見えないリスクに怒りと不安が爆発！</div>
-  <div class="buzz-reason">💡 バズる理由: <span>新しい働き方への疑問が共感呼ぶ</span></div>
-  <div class="template">私もパープル企業の不安定さに悩みました。働き方の未来が見えないから、投資で自分の経済的自由を作るしかないんです。</div>
+  <table class="info-table">
+    <tr><td>一言要約</td><td>Z世代が恐れるのはブラック企業より“パープル企業”の不安定さ</td></tr>
+    <tr><td>Xフック文</td><td><strong>若者が恐れるのはブラック企業じゃない？“パープル企業”の見えないリスクに怒りと不安が爆発！</strong></td></tr>
+    <tr><td>バズる理由</td><td>新しい働き方への疑問が共感呼ぶ</td></tr>
+    <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+  </table>
+  <div class="template-section"><h4>📝 投稿候補（パターA）</h4><div class="template-box">私もパープル企業の不安定さに悩みました。働き方の未来が見えないから、投資で自分の経済的自由を作るしかないんです。</div></div>
   <div class="card-links">
     <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5LVXRmVVdDY1dBVW9NbVEwRjB2MVA2a2VPNThXREluQzZPMW5mZ0o0dWhzYVJLRjVEMU5scFJXV0FlSF9rSHJwQUItYU9EVnNxakVlYWZhanlPUzQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
     <a href="https://x.com/search?q=パープル企業&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
   </div>
 </div>
-  <div class="summary-section">
+  <div class="tips-section">
     <h2>📌 バズ投稿を作る3つのコツ</h2>
     <ul class="tips">
       <li><span class="tip-num">1</span><span>冒頭に<strong>「私も〇〇だった」という共感ストーリー</strong>を入れると伸びやすい</span></li>
