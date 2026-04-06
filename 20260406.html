@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 株クラ朝刊 2026年04月06日（月）</title>
+<style>
+  :root {
+    --primary: #1a1a2e; --accent: #e94560; --gold: #f5a623;
+    --bg: #0f0f1a; --card: #16213e; --text: #e0e0e0;
+    --muted: #8888aa; --border: #2a2a4a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; line-height: 1.7; }
+  header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 32px 20px 24px; text-align: center; border-bottom: 2px solid var(--accent); }
+  header h1 { font-size: clamp(1.4rem, 4vw, 2rem); color: #fff; letter-spacing: 0.05em; }
+  header h1 span { color: var(--gold); }
+  header p { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+  .badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.7rem; padding: 2px 10px; border-radius: 20px; margin-top: 8px; letter-spacing: 0.08em; }
+  .container { max-width: 800px; margin: 0 auto; padding: 24px 16px 60px; }
+  .date-nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .date-nav a { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px 16px; border-radius: 20px; font-size: 0.82rem; text-decoration: none; transition: all 0.2s; }
+  .date-nav a.active, .date-nav a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .trends-section { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 10px; padding: 20px; margin-bottom: 28px; }
+  .trends-section h2 { font-size: 1rem; color: var(--accent); margin-bottom: 14px; }
+  .trend-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .trend-tag { background: #1a1a3e; border: 1px solid var(--border); border-radius: 20px; padding: 4px 14px; font-size: 0.82rem; color: var(--text); text-decoration: none; transition: all 0.2s; }
+  .trend-tag:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .trend-tag .traffic { color: var(--gold); font-size: 0.72rem; margin-left: 4px; }
+  .news-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 20px; margin-bottom: 20px; transition: transform 0.2s, box-shadow 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(233,69,96,0.15); }
+  .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+  .rank { background: linear-gradient(135deg, var(--accent), #c0392b); color: #fff; font-size: 1.1rem; font-weight: bold; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .rank.gold { background: linear-gradient(135deg, #f5a623, #e67e22); }
+  .rank.silver { background: linear-gradient(135deg, #bdc3c7, #95a5a6); color: #333; }
+  .rank.bronze { background: linear-gradient(135deg, #cd7f32, #a04000); }
+  .card-title { flex: 1; }
+  .category-badge { display: inline-block; font-size: 0.7rem; padding: 2px 10px; border-radius: 12px; margin-bottom: 6px; font-weight: bold; }
+  .cat-tax { background: #3d1a1a; color: #ff8080; border: 1px solid #ff4444; }
+  .cat-work { background: #1a2d1a; color: #80ff80; border: 1px solid #44aa44; }
+  .cat-price { background: #1a1a3d; color: #8080ff; border: 1px solid #4444ff; }
+  .cat-salary { background: #2d2d1a; color: #ffff80; border: 1px solid #aaaa44; }
+  .cat-nisa { background: #1a2d2d; color: #80ffff; border: 1px solid #44aaaa; }
+  .cat-market { background: #2d1a2d; color: #ff80ff; border: 1px solid #aa44aa; }
+  .cat-macro { background: #2d1a1a; color: #ffaa80; border: 1px solid #aa6644; }
+  .cat-z { background: #1a1a2d; color: #aaaaff; border: 1px solid #6666cc; }
+  .cat-default { background: #1a1a1a; color: #aaaaaa; border: 1px solid #555; }
+  .news-title { font-size: 0.95rem; font-weight: bold; color: #fff; line-height: 1.5; }
+  .score-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .score-label { font-size: 0.72rem; color: var(--muted); }
+  .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 1px; }
+  .summary { background: #0a0a1a; border-left: 3px solid var(--gold); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 0.9rem; color: #ddd; margin-bottom: 12px; }
+  .hook { background: linear-gradient(135deg, #1a0a0a, #2a0a0a); border: 1px solid #cc3333; border-radius: 8px; padding: 12px 14px; font-size: 0.88rem; color: #ffcccc; margin-bottom: 12px; font-weight: bold; }
+  .hook::before { content: "🔥 Xフック文: "; color: var(--accent); }
+  .template { background: #0a1a0a; border: 1px solid #336633; border-radius: 8px; padding: 12px 14px; font-size: 0.85rem; color: #ccffcc; margin-bottom: 14px; font-style: italic; }
+  .template::before { content: "📝 投稿テンプレ: "; color: #66cc66; font-style: normal; font-weight: bold; }
+  .buzz-reason { font-size: 0.75rem; color: var(--muted); margin-bottom: 10px; }
+  .buzz-reason span { color: var(--gold); }
+  .card-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 20px; font-size: 0.8rem; text-decoration: none; font-weight: bold; transition: all 0.2s; }
+  .btn-news { background: #1a3a5c; color: #7ab8ff; border: 1px solid #2a5a8c; }
+  .btn-news:hover { background: #2a5a8c; color: #fff; }
+  .btn-x { background: #1a1a1a; color: #aaa; border: 1px solid #333; }
+  .btn-x:hover { background: #333; color: #fff; }
+  .summary-section { background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--gold); border-radius: 10px; padding: 24px 20px; margin-top: 32px; }
+  .summary-section h2 { color: var(--gold); margin-bottom: 16px; }
+  .tips { list-style: none; }
+  .tips li { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; display: flex; gap: 10px; align-items: flex-start; }
+  .tips li:last-child { border-bottom: none; }
+  .tip-num { background: var(--gold); color: #000; font-weight: bold; font-size: 0.75rem; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  footer { text-align: center; padding: 20px; color: var(--muted); font-size: 0.75rem; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<header>
+  <h1>📊 株クラ朝刊 <span>2026年04月06日（月）</span></h1>
+  <p>お金・働き方・投資の「今日の話題」をまとめました</p>
+  <span class="badge">毎朝8時配信 ｜ 株クラ初心者向けトレンドニュース10選</span>
+</header>
+<div class="container">
+  <div class="date-nav"><a href="20260407.html" class="">2026/04/07</a><a href="20260406.html" class="active">2026/04/06</a><a href="20260405.html" class="">2026/04/05</a></div>
+  <div class="trends-section"><h2>🔥 本日のGoogleトレンド（日本）</h2><div class="trend-tags"><a href="https://x.com/search?q=%E3%82%A4%E3%82%AA%E3%83%B3&src=typed_query&f=top" target="_blank" class="trend-tag">イオン<span class="traffic">1000+</span></a></div></div>
+  
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank gold">1</div>
+    <div class="card-title">
+      <span class="category-badge cat-default">芸能人×お金</span>
+      <div class="news-title">中山美穂 20億円遺産 息子相続放棄 11億円相続税 日本の相続税55％は世界一の悪法か</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(10/10)</span>
+  </div>
+  <div class="summary">中山美穂の息子が20億円相続放棄で11億円税負担に</div>
+  <div class="hook">えっ！中山美穂の遺産で息子が11億円の相続税払うって知らなかった？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>芸能人×驚きの大金で注目</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1kX255RkNPTEV3Z0dpX3k1dmhaWnAyQmw5cEd0aGxlbmtFNWVYVTgyaDZGcUZpckhKWXdMU2Ztbl9JMERpRHNSc2VZVlpIZw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=中山美穂%20遺産&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank silver">2</div>
+    <div class="card-title">
+      <span class="category-badge cat-work">退職・働き方</span>
+      <div class="news-title">「初日退職」激増 退職代行に新入社員殺到、浮かび上がる企業の説明不足と就職観の変化</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(9/10)</span>
+  </div>
+  <div class="summary">新入社員が入社初日に退職代行を依頼激増中</div>
+  <div class="hook">知らなかった！入社初日に退職代行が激増してるってマジ？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>共感×炎上の働き方問題</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE9ycnk5Nm1MZVNBR0IydzhUTmplZ1ZobVpLMWl4Nl9pMGVlWEV3aUUwTTJzdXF2NjdTUURVUEJkanFyNmJzRlRLM2IxbVNRUQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=退職代行%20初日&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank bronze">3</div>
+    <div class="card-title">
+      <span class="category-badge cat-tax">制度・ルール変更</span>
+      <div class="news-title">4月こう変わる 車の環境性能割廃止/食料品や電気値上げ</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(9/10)</span>
+  </div>
+  <div class="summary">4月から車の環境性能割廃止・食料品や電気代値上げ</div>
+  <div class="hook">これは怒る！4月から電気代や食費が値上げされるって本当？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>生活直撃の値上げ情報</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5hNlgzZHE0dHM5ZmRQZXFJbjJlaDNmblZFMl9kdnZmZkpiU3JuVk5QYUpjQWlxbjgtam55Vy1CcEQ2c3dkdzF5cVRPbXk3Z0hTOXpNNVA1U0c5UWhFako2eWdjQnRMblZoQUp1VA?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=電気代%20値上げ&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank ">4</div>
+    <div class="card-title">
+      <span class="category-badge cat-tax">税金・手取り</span>
+      <div class="news-title">令和7年、経理部で囁かれた「来年から健康保険料増・手取り大幅減」の悲報…大増税時代、サラリーマンの首がじわじわ絞められるニッポン【税理士が解</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(9/10)</span>
+  </div>
+  <div class="summary">令和7年から健康保険料増で手取り大幅減の悲報</div>
+  <div class="hook">知らなかった！来年から健康保険料増で手取り減るって本当？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>給料減少の生活不安</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTFBoRlROdmlkYmVIUEFGR1Y4MHZobkJPWkpuWmFZMFR5cHNKNzBVMGdadWZBb0pXWmFHYWktYkZvbUJrMld5aFpBLUZZalZTZ3dkRDJ5enc4NDh4UFVoZnZxa1ZWZVpzWnRxMUxlTEFyYWVZRHdVRmtxd1ZfOC1OQkU?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=健康保険料%20増加&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank ">5</div>
+    <div class="card-title">
+      <span class="category-badge cat-price">物価・生活費</span>
+      <div class="news-title">「食費がどんどん上がって家計が苦しいです」年収550万円・46歳シングルマザーのリアルな収支内訳</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(9/10)</span>
+  </div>
+  <div class="summary">年収550万シングルマザーの食費高騰で家計苦しい実態</div>
+  <div class="hook">これは怒る！年収550万でも食費高騰で家計が苦しいって本当？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>生活費のリアルな苦労話</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMieEFVX3lxTFBOOGRmWEVobTAzX245cFg4RjNSQmp5aFRyallocm11RTJSRjBEYVc2QVQ0bmR2c3A3RHFQblktMTZIOERnQ0QydldkUUROMGZJZTctVnpfTmdmdUZyTzJhdGdDZjZtVUhuZ2JhWjFFb0JjTEFDaVJYNtIBfkFVX3lxTFBZYUktbWQzejVCcDRmQmVRQm5XbkEzSDdUMmdEZ1NSX2JSZG5sNHZZM19xOE1JTTZoQ1MyS0p6VzBSTmFTN3dxT2pzZmIzMGtwWWRxRGdfNUR6amVQdFozdXFhbUxGMDlvS04xTlQ5VVlNTW5nUF9EWlRTTGpndw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=食費%20高騰&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank ">6</div>
+    <div class="card-title">
+      <span class="category-badge cat-default">お金の格差・実態</span>
+      <div class="news-title">【独身世帯の貯蓄格差】3割超が金融資産ゼロ？60代の中央値300万円、単身シニア家計は月約2.8万円の赤字も（LIMO）</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(8/10)</span>
+  </div>
+  <div class="summary">独身世帯3割超が金融資産ゼロの貯蓄格差</div>
+  <div class="hook">えっ！独身世帯の3割以上が貯金ゼロって知ってた？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>驚きの数字×生活実態</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE95UlZ0ZU1NSUI1RlpFdnZIa2R1TDI4X3QtNmlzbzJQaTktVzFCYmE1S1BlLUFYSWd1RnduTFA4RjdicEJjNVA2OFFGWU9LaU51S3d3TUUwQTdDMGtvUHNUMlN6TEdVZ0JfTnF3Y09LQW9DMjY4dEdwdTh4N3ZvMG8?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=貯蓄格差%20独身&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank ">7</div>
+    <div class="card-title">
+      <span class="category-badge cat-default">お金の格差・実態</span>
+      <div class="news-title">会社員の平均給与「月34万円」の裏で広がる「月15万円格差」の残酷現実【47都道府県「平均給与」ランキング】</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(8/10)</span>
+  </div>
+  <div class="summary">会社員の月給平均34万円の裏に15万円格差あり</div>
+  <div class="hook">知らなかった！月給平均34万円の裏で15万円の格差が広がってるって？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>給料格差×驚きの数字</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE4wQjNWMjZ4bm5CR0lxTmx5Wjh6ekZGR09jdnFybFRPOGFOM3dfTW9BQzlmeVQ4d0VtSm02SzUwYUlSQ0FkVkFNbjFuSW5QUHF5UHdrYkhjNU0tNk0?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=給与格差&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank ">8</div>
+    <div class="card-title">
+      <span class="category-badge cat-default">芸能人×お金</span>
+      <div class="news-title">「約2000万円の退職金をもらい…2億円ほどの資産を築いていたのに」老後破産した夫婦の衝撃事例</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(8/10)</span>
+  </div>
+  <div class="summary">約2億円資産築いた夫婦が老後破産した衝撃事例</div>
+  <div class="hook">知らなかった！2億円資産あっても老後破産することあるの？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>驚きの資産崩壊事例</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTE1FWFZjYzh5Vzk2UkpUR0lJdTlOZzRWRUJ5bHhkS3ZTRWxIa0lJVFFfN0ptRmtGcmoyOGhwSmMwR0l5ZEE?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=老後破産%202億円&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank ">9</div>
+    <div class="card-title">
+      <span class="category-badge cat-nisa">NISA・投資入門</span>
+      <div class="news-title">新NISAで後悔する人の行動とは？投資2～3年目に多い判断ミスを解説します！</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(7/10)</span>
+  </div>
+  <div class="summary">新NISAで2〜3年目に多い判断ミスで後悔する人続出</div>
+  <div class="hook">えっ！新NISAで2〜3年目に後悔する人が増えてるって？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>初心者の失敗あるある</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBvNDFLeHJjYkEzVVlZTE5jQUtqQVdqb3BkVV9tT3p4Y1JHOHVrWXZiQmJPdEk1aEpGV2RQc3pBNGVVS1RNZGhEa09sVHFvbVAwV3NUSExhVjFlX3JCZC1v?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=新NISA%20後悔&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+
+<div class="news-card">
+  <div class="card-header">
+    <div class="rank ">10</div>
+    <div class="card-title">
+      <span class="category-badge cat-default">芸能人×お金</span>
+      <div class="news-title">「どこ見てんのよ！」タレント・青木さやか…100平米超・家賃30万円超のマンションに住んでいた20年前、大ブレイク中の〈衝撃の通帳残高〉 |</div>
+    </div>
+  </div>
+  <div class="score-bar">
+    <span class="score-label">バズスコア</span>
+    <span class="stars">⭐⭐⭐⭐⭐⭐⭐</span>
+    <span class="score-label">(7/10)</span>
+  </div>
+  <div class="summary">青木さやかの20年前家賃30万円超マンションと通帳残高</div>
+  <div class="hook">えっ！青木さやかが20年前に家賃30万円超のマンション住んでた？</div>
+  <div class="buzz-reason">💡 バズる理由: <span>芸能人の意外な生活実態</span></div>
+  <div class="template">**【パターンA】共感ストーリー型** — 「私も〇〇だった」から始める共感型**</div>
+  <div class="card-links">
+    <a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE5PVmdJcllUR0c5aGo5MDk1c1N0dVpkdUw3ZVYzQTktOXlpeHo5OVh1SXBJRDJheUhnTmhUbmZvSjBtdUtVRm1uNHA1RnZXRzBWd0E?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+    <a href="https://x.com/search?q=青木さやか%20家賃&src=typed_query&f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+  </div>
+</div>
+  <div class="summary-section">
+    <h2>📌 バズ投稿を作る3つのコツ</h2>
+    <ul class="tips">
+      <li><span class="tip-num">1</span><span>冒頭に<strong>「私も〇〇だった」という共感ストーリー</strong>を入れると伸びやすい</span></li>
+      <li><span class="tip-num">2</span><span><strong>具体的な数字</strong>（〇〇円、〇〇%、〇〇万人）を使うとリアリティが増す</span></li>
+      <li><span class="tip-num">3</span><span>最後に<strong>「あなたはどう思いますか？」</strong>と問いかけると返信が増える</span></li>
+    </ul>
+  </div>
+</div>
+<footer>
+  <p>このレポートは自動生成されました。投資は自己責任でお願いします。</p>
+  <p>生成日時: 2026-04-06 00:13</p>
+</footer>
+</body>
+</html>
