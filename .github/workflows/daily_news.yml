@@ -1,0 +1,48 @@
+name: 株クラ朝刊 毎朝自動配信
+
+on:
+  schedule:
+    # 毎朝 08:00 JST = 23:00 UTC (前日)
+    - cron: '0 23 * * *'
+  workflow_dispatch:  # 手動実行も可能
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # GitHub Pagesへのプッシュに必要
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Python 3.11 をセットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 依存パッケージをインストール
+        run: |
+          pip install openai requests beautifulsoup4 feedparser pytrends
+
+      - name: ニュース収集・AI要約を実行
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
+        run: |
+          mkdir -p reports
+          python scripts/news_collector_v2.py
+
+      - name: HTMLを生成してGitHub Pagesにプッシュ・LINE送信
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
+          REPO_DIR: ${{ github.workspace }}
+        run: |
+          git config user.name "kabukura-bot"
+          git config user.email "bot@kabukura.com"
+          python scripts/publish_to_github.py
