@@ -160,27 +160,32 @@ JSONのみ返答してください。"""
 # =====================================================
 # Google News RSS からニュースを取得
 # =====================================================
-def fetch_news(queries, max_per_query=3):
-    """Google News RSSからニュースを取得（実行日・前日のみ）"""
+def fetch_news(queries, max_per_query=8):
+    """Google News RSSからニュースを取得。
+    前日以降の記事を優先し、得られない場合は直近7日間にフォールバック。"""
     import urllib.parse
     import email.utils
 
-    # 実行日と前日の範囲を計算（JST基準）
+    # JST基準で前日・7日前の日付を計算
     jst = datetime.timezone(datetime.timedelta(hours=9))
     now_jst = datetime.datetime.now(jst)
-    today_jst = now_jst.date()
-    yesterday_jst = today_jst - datetime.timedelta(days=1)
-    cutoff_dt = datetime.datetime.combine(yesterday_jst, datetime.time.min).replace(tzinfo=jst)
+    yesterday_jst = (now_jst - datetime.timedelta(days=1)).date()
+    week_ago_jst = (now_jst - datetime.timedelta(days=7)).date()
+    after_date_1d = yesterday_jst.strftime("%Y-%m-%d")   # 前日以降
+    after_date_7d = week_ago_jst.strftime("%Y-%m-%d")    # 7日前以降（フォールバック）
+    cutoff_1d = datetime.datetime.combine(yesterday_jst, datetime.time.min).replace(tzinfo=jst)
+    cutoff_7d = datetime.datetime.combine(week_ago_jst, datetime.time.min).replace(tzinfo=jst)
 
     all_news = []
     seen_titles = set()
 
-    for q in queries:
-        encoded = urllib.parse.quote(q["query"])
+    def fetch_for_query(q, after_date, cutoff_dt, label_suffix=""):
+        """1つのクエリで記事を取得してリストで返す"""
+        query_with_date = f"{q['query']} after:{after_date}"
+        encoded = urllib.parse.quote(query_with_date)
         url = f"https://news.google.com/rss/search?q={encoded}&hl=ja&gl=JP&ceid=JP:ja"
         feed = feedparser.parse(url)
-
-        count = 0
+        results = []
         for entry in feed.entries:
             title = entry.get("title", "").strip()
             if not title:
@@ -188,30 +193,41 @@ def fetch_news(queries, max_per_query=3):
             key = title[:50]
             if key in seen_titles:
                 continue
-
-            # 日付フィルタ: 実行日・前日のみ
             pub_str = entry.get("published", "")
             if pub_str:
                 try:
-                    pub_tuple = email.utils.parsedate_to_datetime(pub_str)
-                    pub_jst = pub_tuple.astimezone(jst)
+                    pub_jst = email.utils.parsedate_to_datetime(pub_str).astimezone(jst)
                     if pub_jst < cutoff_dt:
-                        continue  # 前日より古い記事はスキップ
+                        continue
                 except Exception:
-                    pass  # 日付パース失敗時はスキップせず通す
-
-            seen_titles.add(key)
-            all_news.append({
+                    pass
+            results.append({
                 "title": title,
                 "link": entry.get("link", ""),
                 "published": pub_str,
                 "source": entry.get("source", {}).get("title", ""),
-                "label": q["label"],
+                "label": q["label"] + label_suffix,
                 "query": q["query"],
+                "key": key,
             })
-            count += 1
-            if count >= max_per_query:
+            if len(results) >= max_per_query:
                 break
+        return results
+
+    for q in queries:
+        # まず前日以降で試みる
+        results = fetch_for_query(q, after_date_1d, cutoff_1d)
+
+        # 前日以降で得られなかった場合は7日間にフォールバック
+        if not results:
+            results = fetch_for_query(q, after_date_7d, cutoff_7d, label_suffix="（直近7日）")
+            if results:
+                print(f"  [フォールバック] {q['label']}: 前日以降0件のただ7日間に拡大")
+
+        for r in results:
+            if r["key"] not in seen_titles:
+                seen_titles.add(r["key"])
+                all_news.append({k: v for k, v in r.items() if k != "key"})
 
     return all_news
 
