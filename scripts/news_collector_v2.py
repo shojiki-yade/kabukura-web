@@ -162,25 +162,22 @@ JSONのみ返答してください。"""
 # =====================================================
 def fetch_news(queries, max_per_query=8):
     """Google News RSSからニュースを取得。
-    前日以降の記事を優先し、得られない場合は直近7日間にフォールバック。"""
+    前日（JST）以降〜当日のニュースのみを取得する。"""
     import urllib.parse
     import email.utils
 
-    # JST基準で前日・7日前の日付を計算
+    # JST基準で前日の日付を計算（前日0時以降のみ取得）
     jst = datetime.timezone(datetime.timedelta(hours=9))
     now_jst = datetime.datetime.now(jst)
     yesterday_jst = (now_jst - datetime.timedelta(days=1)).date()
-    week_ago_jst = (now_jst - datetime.timedelta(days=7)).date()
     after_date_1d = yesterday_jst.strftime("%Y-%m-%d")   # 前日以降
-    after_date_7d = week_ago_jst.strftime("%Y-%m-%d")    # 7日前以降（フォールバック）
     cutoff_1d = datetime.datetime.combine(yesterday_jst, datetime.time.min).replace(tzinfo=jst)
-    cutoff_7d = datetime.datetime.combine(week_ago_jst, datetime.time.min).replace(tzinfo=jst)
 
     all_news = []
     seen_titles = set()
 
-    def fetch_for_query(q, after_date, cutoff_dt, label_suffix=""):
-        """1つのクエリで記事を取得してリストで返す"""
+    def fetch_for_query(q, after_date, cutoff_dt):
+        """1つのクエリで記事を取得してリストで返す（前日・当日のみ）"""
         query_with_date = f"{q['query']} after:{after_date}"
         encoded = urllib.parse.quote(query_with_date)
         url = f"https://news.google.com/rss/search?q={encoded}&hl=ja&gl=JP&ceid=JP:ja"
@@ -206,7 +203,7 @@ def fetch_news(queries, max_per_query=8):
                 "link": entry.get("link", ""),
                 "published": pub_str,
                 "source": entry.get("source", {}).get("title", ""),
-                "label": q["label"] + label_suffix,
+                "label": q["label"],
                 "query": q["query"],
                 "key": key,
             })
@@ -215,14 +212,10 @@ def fetch_news(queries, max_per_query=8):
         return results
 
     for q in queries:
-        # まず前日以降で試みる
+        # 前日・当日のニュースのみ取得
         results = fetch_for_query(q, after_date_1d, cutoff_1d)
-
-        # 前日以降で得られなかった場合は7日間にフォールバック
         if not results:
-            results = fetch_for_query(q, after_date_7d, cutoff_7d, label_suffix="（直近7日）")
-            if results:
-                print(f"  [フォールバック] {q['label']}: 前日以降0件のただ7日間に拡大")
+            print(f"  [INFO] {q['label']}: 前日以降の記事なし（スキップ）")
 
         for r in results:
             if r["key"] not in seen_titles:
