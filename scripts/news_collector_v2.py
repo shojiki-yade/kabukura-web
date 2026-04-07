@@ -161,12 +161,21 @@ JSONのみ返答してください。"""
 # Google News RSS からニュースを取得
 # =====================================================
 def fetch_news(queries, max_per_query=3):
-    """Google News RSSからニュースを取得"""
+    """Google News RSSからニュースを取得（実行日・前日のみ）"""
+    import urllib.parse
+    import email.utils
+
+    # 実行日と前日の範囲を計算（JST基準）
+    jst = datetime.timezone(datetime.timedelta(hours=9))
+    now_jst = datetime.datetime.now(jst)
+    today_jst = now_jst.date()
+    yesterday_jst = today_jst - datetime.timedelta(days=1)
+    cutoff_dt = datetime.datetime.combine(yesterday_jst, datetime.time.min).replace(tzinfo=jst)
+
     all_news = []
     seen_titles = set()
 
     for q in queries:
-        import urllib.parse
         encoded = urllib.parse.quote(q["query"])
         url = f"https://news.google.com/rss/search?q={encoded}&hl=ja&gl=JP&ceid=JP:ja"
         feed = feedparser.parse(url)
@@ -174,17 +183,28 @@ def fetch_news(queries, max_per_query=3):
         count = 0
         for entry in feed.entries:
             title = entry.get("title", "").strip()
-            if not title or title in seen_titles:
+            if not title:
                 continue
             key = title[:50]
             if key in seen_titles:
                 continue
-            seen_titles.add(key)
 
+            # 日付フィルタ: 実行日・前日のみ
+            pub_str = entry.get("published", "")
+            if pub_str:
+                try:
+                    pub_tuple = email.utils.parsedate_to_datetime(pub_str)
+                    pub_jst = pub_tuple.astimezone(jst)
+                    if pub_jst < cutoff_dt:
+                        continue  # 前日より古い記事はスキップ
+                except Exception:
+                    pass  # 日付パース失敗時はスキップせず通す
+
+            seen_titles.add(key)
             all_news.append({
                 "title": title,
                 "link": entry.get("link", ""),
-                "published": entry.get("published", ""),
+                "published": pub_str,
                 "source": entry.get("source", {}).get("title", ""),
                 "label": q["label"],
                 "query": q["query"],
@@ -527,7 +547,7 @@ def main():
         print(f"  → 本日は株クラ関連トレンドなし（全トレンドを非表示）")
 
     print(f"[{now.strftime('%H:%M:%S')}] ニュース収集開始...")
-    news_list = fetch_news(NEWS_QUERIES, max_per_query=3)
+    news_list = fetch_news(NEWS_QUERIES, max_per_query=8)
     print(f"  → {len(news_list)}件のニュースを収集")
 
     print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] AI選定・要約・テンプレート生成中...")

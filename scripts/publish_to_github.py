@@ -32,7 +32,7 @@ LINE_CHANNEL_ACCESS_TOKEN = os.environ.get(
 LINE_GROUP_ID = os.environ.get("LINE_GROUP_ID", "C4f779e049966034f8bdf83b08139cf2c")
 
 REPORTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reports")
-REPO_DIR = os.environ.get("REPO_DIR", "/home/ubuntu/kabukura_web")
+REPO_DIR = "/home/ubuntu/kabukura_web"
 
 # =====================================================
 # HTML テンプレート（manus.im風 白背景シンプルデザイン）
