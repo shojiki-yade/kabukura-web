@@ -25,18 +25,15 @@ jobs:
 
       - name: 依存パッケージをインストール
         run: |
-          pip install openai requests beautifulsoup4 feedparser pytrends
+          pip install openai feedparser requests
 
-      - name: ニュース収集・AI要約を実行
+      - name: ニュース収集・AI要約・HTML生成
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
-          LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
         run: |
-          mkdir -p reports
           python scripts/news_collector_v2.py
 
-      - name: HTMLを生成してGitHub Pagesにプッシュ・LINE送信
+      - name: GitHub Pagesにプッシュ・LINE送信
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
