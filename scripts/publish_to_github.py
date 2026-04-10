@@ -31,7 +31,10 @@ GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GITHUB_PAGES_BASE = f"https://{GITHUB_USER}.github.io/{GITHUB_REPO}"
 
 LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")
-LINE_GROUP_ID = os.environ.get("LINE_GROUP_ID", "")
+# カンマ区切りで複数グループIDを指定可能
+LINE_GROUP_IDS = [
+    gid.strip() for gid in os.environ.get("LINE_GROUP_ID", "").split(",") if gid.strip()
+]
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.environ.get("REPO_DIR") or os.path.dirname(SCRIPT_DIR)
@@ -97,7 +100,7 @@ def git_push(repo_root, date_file):
 
 
 def send_line(date_str, page_url):
-    if not LINE_CHANNEL_ACCESS_TOKEN or not LINE_GROUP_ID:
+    if not LINE_CHANNEL_ACCESS_TOKEN or not LINE_GROUP_IDS:
         print("[SKIP] LINE_CHANNEL_ACCESS_TOKEN または LINE_GROUP_ID 未設定")
         return False
 
@@ -111,18 +114,20 @@ def send_line(date_str, page_url):
         "Content-Type": "application/json",
         "Authorization": f"Bearer {LINE_CHANNEL_ACCESS_TOKEN}"
     }
-    data = {"to": LINE_GROUP_ID, "messages": [{"type": "text", "text": full_message}]}
-    try:
-        res = requests.post(api_url, headers=headers, json=data, timeout=30)
-        if res.status_code == 200:
-            print(f"[OK] LINE送信成功: {page_url}")
-            return True
-        else:
-            print(f"[ERROR] LINE送信失敗: {res.status_code} {res.text}")
-            return False
-    except Exception as e:
-        print(f"[ERROR] LINE送信エラー: {e}")
-        return False
+    success_count = 0
+    for group_id in LINE_GROUP_IDS:
+        data = {"to": group_id, "messages": [{"type": "text", "text": full_message}]}
+        try:
+            res = requests.post(api_url, headers=headers, json=data, timeout=30)
+            if res.status_code == 200:
+                print(f"[OK] LINE送信成功: {group_id[:8]}...  → {page_url}")
+                success_count += 1
+            else:
+                print(f"[ERROR] LINE送信失敗 ({group_id[:8]}...): {res.status_code} {res.text}")
+        except Exception as e:
+            print(f"[ERROR] LINE送信エラー ({group_id[:8]}...): {e}")
+    print(f"[SUMMARY] LINE送信: {success_count}/{len(LINE_GROUP_IDS)} グループに配信")
+    return success_count > 0
 
 
 def main():
