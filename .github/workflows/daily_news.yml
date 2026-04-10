@@ -4,8 +4,6 @@ on:
   schedule:
     # 毎朝 07:00 JST = 22:00 UTC (前日)
     - cron: '0 22 * * *'
-    # 一時テスト用 14:30 JST = 05:30 UTC （テスト後に削除予定）
-    - cron: '30 5 * * *'
   workflow_dispatch:  # 手動実行も可能
 
 jobs:
