@@ -94,11 +94,11 @@ NEWS_QUERIES = [
     {"query": "NISA 初心者", "label": "NISA・投資入門"},
     {"query": "投資 やめた", "label": "NISA・投資入門"},
 
-    {"query": "生成AI 新サービス", "label": "テクノロジー"},
-    {"query": "ChatGPT 最新", "label": "テクノロジー"},
-    {"query": "AI 発表", "label": "テクノロジー"},
     {"query": "テスラ EV", "label": "テクノロジー"},
     {"query": "スマホ 新製品", "label": "テクノロジー"},
+    {"query": "半導体 最新", "label": "テクノロジー"},
+    {"query": "ロボット 新技術", "label": "テクノロジー"},
+    {"query": "宇宙 ロケット", "label": "テクノロジー"},
 
     {"query": "円安 株価", "label": "経済"},
     {"query": "日銀 金利", "label": "経済"},
@@ -107,12 +107,12 @@ NEWS_QUERIES = [
     {"query": "倒産 企業", "label": "経済"},
     {"query": "リストラ 大手", "label": "経済"},
 
-    {"query": "ドラマ 話題", "label": "エンタメ"},
-    {"query": "Netflix 配信", "label": "エンタメ"},
-    {"query": "映画 話題", "label": "エンタメ"},
-    {"query": "芸能人 結婚", "label": "エンタメ"},
-    {"query": "芸能人 引退", "label": "エンタメ"},
-    {"query": "スキャンダル 芸能", "label": "エンタメ"},
+    {"query": "Netflix 決算", "label": "エンタメ"},
+    {"query": "映画 興行収入", "label": "エンタメ"},
+    {"query": "ABEMA 黒字", "label": "エンタメ"},
+    {"query": "推し活 出費", "label": "エンタメ"},
+    {"query": "芸能人 ギャラ", "label": "エンタメ"},
+    {"query": "映画館 値上げ", "label": "エンタメ"},
 ]
 
 CATEGORY_CSS = {
@@ -152,6 +152,9 @@ def fetch_news(queries, max_per_query=8):
         for entry in feed.entries:
             title = entry.get("title", "").strip()
             if not title:
+                continue
+            # 「AI」関連記事を除外
+            if "AI" in title or "ＡＩ" in title or "人工知能" in title or "ChatGPT" in title or "生成ai" in title.lower():
                 continue
             key = title[:50]
             if key in seen_titles:
@@ -252,14 +255,15 @@ def ai_select_and_summarize(news_list, target_count=10):
 ✅ 共感・炎上の働き方ニュース（退職代行・ブラック企業）
 ✅ 生活直撃の値上げ・物価（食費・電気代・具体的品目）
 ✅ NISA・投資入門（やわらかい切り口限定）
-✅ テクノロジー（AIや新製品が生活に与える影響）
+✅ テクノロジー（EV・半導体・スマホ・ロボット・宇宙など生活に与える影響。ただしAI関連は除外）
 ✅ 経済（株価・金利・企業倒産など一般人に影響あるもの）
 ✅ エンタメ（話題のドラマ・映画・芸能）
 
 ❌ 避けるニュース
+- AI・人工知能・ChatGPT・生成AIに関する記事（全て除外）
 - 硬すぎる金融政策（FRB・長期金利◯%など）
 - 副業紹介・副業おすすめ
-- お金と無関係の芸能ゴシップ
+- お金と無関係の芸能ゴシップ・エンタメ
 - スポーツ結果、事件・事故・災害
 
 【選定件数の絶対ルール（最重要）】
