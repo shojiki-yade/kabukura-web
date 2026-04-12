@@ -30,6 +30,8 @@ jobs:
       - name: ニュース収集・AI要約・HTML生成
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_CSE_ID: ${{ secrets.GOOGLE_CSE_ID }}
         run: |
           python scripts/news_collector_v2.py
 

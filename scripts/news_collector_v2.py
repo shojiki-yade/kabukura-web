@@ -18,6 +18,7 @@ import email.utils
 import html as html_escape_mod
 
 import feedparser
+import requests
 from openai import OpenAI
 
 # UTF-8 出力（Windows対応）
@@ -230,6 +231,60 @@ def format_pub_date(pub_str):
         return pub_str[:16]
 
 
+def _clean_title_for_search(title):
+    """検索用にタイトルから情報源サフィックスや記号を除去"""
+    t = re.sub(r'\s*[-–—|｜]\s*[^-–—|｜]+$', '', title).strip()
+    t = re.sub(r'[【】「」『』\[\]()（）]', ' ', t)
+    t = re.sub(r'\s+', ' ', t).strip()
+    return t[:50]
+
+
+def fetch_x_mention_counts(news_list):
+    """Google Custom Search API で site:x.com 検索し、各記事のX言及件数を取得。
+    取得失敗・未設定時は全て None を設定。"""
+    api_key = os.environ.get("GOOGLE_API_KEY", "")
+    cse_id = os.environ.get("GOOGLE_CSE_ID", "")
+    if not api_key or not cse_id:
+        print("[SKIP] GOOGLE_API_KEY または GOOGLE_CSE_ID 未設定。X言及数取得をスキップ")
+        for n in news_list:
+            n["x_mentions"] = None
+        return news_list
+
+    url = "https://www.googleapis.com/customsearch/v1"
+    success = 0
+    for n in news_list:
+        query = _clean_title_for_search(n.get("title", ""))
+        if not query:
+            n["x_mentions"] = None
+            continue
+        params = {
+            "key": api_key,
+            "cx": cse_id,
+            "q": query,
+            "num": 1,
+        }
+        try:
+            res = requests.get(url, params=params, timeout=15)
+            if res.status_code == 200:
+                data = res.json()
+                total = int(data.get("searchInformation", {}).get("totalResults", 0))
+                n["x_mentions"] = total
+                success += 1
+            else:
+                n["x_mentions"] = None
+                if res.status_code == 429:
+                    print(f"[WARN] CSE クォータ超過: {res.status_code}")
+                    # 以降はスキップ
+                    for rest in news_list[news_list.index(n)+1:]:
+                        rest["x_mentions"] = None
+                    break
+        except Exception as e:
+            n["x_mentions"] = None
+            print(f"[WARN] CSE 取得エラー: {e}")
+    print(f"[OK] X言及数取得: {success}/{len(news_list)}件")
+    return news_list
+
+
 def esc(s):
     return html_escape_mod.escape(s or "", quote=True)
 
@@ -239,7 +294,8 @@ def esc(s):
 # =====================================================
 def ai_select_and_summarize(news_list, target_count=10):
     news_json = json.dumps(
-        [{"id": i, "title": n["title"], "label": n["label"], "source": n["source"]}
+        [{"id": i, "title": n["title"], "label": n["label"], "source": n["source"],
+          "x_mentions": n.get("x_mentions")}
          for i, n in enumerate(news_list)],
         ensure_ascii=False
     )
@@ -359,6 +415,28 @@ def ai_select_and_summarize(news_list, target_count=10):
   g. 疑問「〜って普通じゃないでしょ？？？」
   10本のパターンCで締め方をできるだけ重複させないこと。**同じ締めフレーズを3本以上で使うの禁止**。
 
+【バズスコア算出ルール（厳守）】
+各ニュースには x_mentions フィールドがあり、これは Google で `site:x.com 記事タイトル` 検索した際のヒット件数（X上での言及数推定）です。
+この数値を**バズスコアの最重要シグナル**として使ってください。以下の基準で score を付けること：
+
+- **10点**: x_mentions >= 5000（全国民が知っているレベル。炎上・大事件・国会答弁級）
+- **9点**: x_mentions 2000-4999（X全体で話題沸騰）
+- **8点**: x_mentions 800-1999（SNSで活発に議論されている）
+- **7点**: x_mentions 300-799（一部クラスタで話題）
+- **6点**: x_mentions 100-299（SNSで少し言及あり）
+- **5点**: x_mentions 30-99（ほぼ無風）
+- **4点以下**: x_mentions 30未満 または null（X上で話題になっていない）
+
+x_mentions が null（取得失敗）の場合は、タイトルの驚き度・固有名詞の有無・共感度から推定して4-6点の範囲で付けること。
+
+【スコア分布の強制】
+{target_count}本の score は以下の分布に従うこと：
+- 9-10点: 最大1本のみ（本当にバズっている場合のみ）
+- 7-8点: 2〜4本
+- 5-6点: 3〜5本
+- 4点以下: 1〜2本
+全部9点・10点にするのは禁止。x_mentions に基づいて正直に付けること。
+
 以下のニュースリストから最もバズる**ちょうど{target_count}本**を選び、以下のJSON形式のみで返答してください:
 
 {{
@@ -420,6 +498,9 @@ def generate_markdown(news_list, selected_items, date_str):
         lines.append(f"| **Xフック文** | {item['hook']} |")
         lines.append(f"| **バズる理由** | {item['buzz_reason']} |")
         lines.append(f"| **バズスコア** | {'⭐' * item.get('score', 5)} ({item.get('score', 5)}/10) |")
+        x_mentions = news.get('x_mentions')
+        if x_mentions is not None:
+            lines.append(f"| **X言及数** | 約 {x_mentions:,} 件（Google調べ） |")
         lines.append(f"| **情報源** | {news['source']}（{format_pub_date(news.get('published',''))}） |")
         lines.append("")
         lines.append("📝 **投稿候補3パターン**")
@@ -589,6 +670,9 @@ def generate_html(news_list, selected_items, date_str, date_file, trends, repo_r
         parts.append(f'      <tr><td>Xフック文</td><td><strong>{esc(item.get("hook",""))}</strong></td></tr>')
         parts.append(f'      <tr><td>バズる理由</td><td>{esc(item.get("buzz_reason",""))}</td></tr>')
         parts.append(f'      <tr><td>バズスコア</td><td><span class="stars">{stars}</span> ({score}/10)</td></tr>')
+        x_mentions = news.get("x_mentions")
+        if x_mentions is not None:
+            parts.append(f'      <tr><td>X言及数</td><td>約 {x_mentions:,} 件 <span style="color:#6b7280;font-size:0.78rem;">(Google調べ)</span></td></tr>')
         parts.append(f'      <tr><td>情報源</td><td>{esc(news.get("source",""))}（{esc(format_pub_date(news.get("published","")))}）</td></tr>')
         parts.append('    </table>')
         parts.append('    <div class="template-section">')
@@ -647,6 +731,9 @@ def main():
     if not news_list:
         print("[ERROR] ニュースなし")
         sys.exit(1)
+
+    print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] X言及数取得中...")
+    news_list = fetch_x_mention_counts(news_list)
 
     print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] AI選定中...")
     selected = ai_select_and_summarize(news_list, target_count=10)
