@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>📊 株クラ朝刊 2026年05月04日（月）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #ffffff; color: #1a1a1a; font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif; line-height: 1.75; font-size: 15px; }
+  .page-header { border-bottom: 1px solid #e5e7eb; padding: 28px 24px 20px; max-width: 780px; margin: 0 auto; }
+  .page-header h1 { font-size: 1.6rem; font-weight: 700; color: #111; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .page-header .meta { margin-top: 6px; font-size: 0.82rem; color: #6b7280; }
+  .page-header .desc { margin-top: 4px; font-size: 0.88rem; color: #374151; }
+  .container { max-width: 780px; margin: 0 auto; padding: 24px 24px 80px; }
+  .date-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb; }
+  .date-nav a { background: #f3f4f6; border: 1px solid #e5e7eb; color: #374151; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; text-decoration: none; transition: all 0.15s; }
+  .date-nav a.active { background: #e94560; border-color: #e94560; color: #fff; font-weight: 600; }
+  .date-nav a:hover:not(.active) { background: #e5e7eb; }
+  .trends-section { background: #fafafa; border: 1px solid #e5e7eb; border-left: 4px solid #e94560; border-radius: 8px; padding: 16px 20px; margin-bottom: 32px; }
+  .trends-section h2 { font-size: 0.95rem; font-weight: 700; color: #e94560; margin-bottom: 12px; }
+  .trend-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .trend-tag { background: #fff; border: 1px solid #d1d5db; border-radius: 20px; padding: 3px 12px; font-size: 0.8rem; color: #374151; text-decoration: none; transition: all 0.15s; }
+  .trend-tag:hover { background: #e94560; border-color: #e94560; color: #fff; }
+  .trend-tag .traffic { color: #f5a623; font-size: 0.72rem; margin-left: 4px; }
+  .news-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px 22px; margin-bottom: 20px; transition: box-shadow 0.15s; background: #fff; }
+  .news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+  .rank { background: #e94560; color: #fff; font-size: 0.9rem; font-weight: 700; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .rank.gold { background: #f5a623; }
+  .rank.silver { background: #9ca3af; }
+  .rank.bronze { background: #cd7f32; }
+  .card-title { flex: 1; }
+  .category-badge { display: inline-block; font-size: 0.7rem; padding: 2px 10px; border-radius: 20px; margin-bottom: 5px; font-weight: 600; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+  .cat-tax { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+  .cat-work { background: #dcfce7; color: #16a34a; border-color: #86efac; }
+  .cat-price { background: #dbeafe; color: #2563eb; border-color: #93c5fd; }
+  .cat-salary { background: #fef9c3; color: #ca8a04; border-color: #fde047; }
+  .cat-nisa { background: #cffafe; color: #0891b2; border-color: #67e8f9; }
+  .cat-market { background: #f3e8ff; color: #9333ea; border-color: #d8b4fe; }
+  .cat-macro { background: #ffedd5; color: #ea580c; border-color: #fdba74; }
+  .cat-z { background: #e0e7ff; color: #4338ca; border-color: #a5b4fc; }
+  .cat-default { background: #f3f4f6; color: #6b7280; border-color: #d1d5db; }
+  .news-title { font-size: 0.97rem; font-weight: 700; color: #111; line-height: 1.55; }
+  .info-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85rem; }
+  .info-table td { padding: 7px 10px; border: 1px solid #e5e7eb; vertical-align: top; }
+  .info-table td:first-child { width: 90px; font-weight: 600; color: #6b7280; background: #f9fafb; white-space: nowrap; }
+  .info-table td:last-child { color: #1a1a1a; }
+  .stars { color: #f5a623; }
+  .template-section { margin-top: 14px; border-top: 1px dashed #e5e7eb; padding-top: 14px; }
+  .template-section h4 { font-size: 0.82rem; font-weight: 700; color: #6b7280; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .template-label { font-size: 0.72rem; font-weight: 700; color: #e94560; margin-top: 10px; margin-bottom: 4px; }
+  .template-label:first-of-type { margin-top: 0; }
+  .template-box { background: #f9fafb; border: 1px solid #e5e7eb; border-left: 3px solid #e94560; border-radius: 0 6px 6px 0; padding: 10px 14px; font-size: 0.85rem; color: #374151; line-height: 1.7; margin-bottom: 8px; }
+  .card-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; font-weight: 500; transition: all 0.15s; border: 1px solid; }
+  .btn-news { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+  .btn-news:hover { background: #2563eb; color: #fff; }
+  .btn-x { background: #f9fafb; color: #374151; border-color: #d1d5db; }
+  .btn-x:hover { background: #111; color: #fff; border-color: #111; }
+  .tips-section { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 20px 22px; margin-top: 32px; }
+  .tips-section h2 { font-size: 1rem; font-weight: 700; color: #92400e; margin-bottom: 14px; }
+  .tips { list-style: none; }
+  .tips li { padding: 8px 0; border-bottom: 1px solid #fde68a; font-size: 0.88rem; display: flex; gap: 10px; align-items: flex-start; color: #374151; }
+  .tips li:last-child { border-bottom: none; }
+  .tip-num { background: #f5a623; color: #fff; font-weight: 700; font-size: 0.72rem; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px; }
+  footer { text-align: center; padding: 24px; color: #9ca3af; font-size: 0.75rem; border-top: 1px solid #e5e7eb; margin-top: 40px; }
+  @media (max-width: 600px) {
+    .page-header, .container { padding-left: 16px; padding-right: 16px; }
+    .page-header h1 { font-size: 1.25rem; }
+    .info-table td:first-child { width: 70px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page-header">
+  <h1>📊 株クラ朝刊 ── 2026年05月04日（月）</h1>
+  <div class="meta">毎朝8時配信｜株クラ初心者向けトレンドニュース10選</div>
+  <div class="desc">お金・働き方・投資の「今日の話題」をまとめました。Xの発信ネタにご活用ください。</div>
+</div>
+<div class="container">
+  <div class="date-nav">
+    <a href="20260504.html" class="active">2026/05/04</a>
+    <a href="20260503.html" class="">2026/05/03</a>
+    <a href="20260502.html" class="">2026/05/02</a>
+    <a href="20260501.html" class="">2026/05/01</a>
+    <a href="20260430.html" class="">2026/04/30</a>
+    <a href="20260429.html" class="">2026/04/29</a>
+    <a href="20260428.html" class="">2026/04/28</a>
+  </div>
+  <div class="trends-section"><h2>🔥 本日のGoogleトレンド（日本）</h2><div class="trend-tags">
+    <a href="https://x.com/search?q=%E5%8B%9D%E6%B5%A6&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">勝浦<span class="traffic">200+</span></a>
+    <a href="https://x.com/search?q=%E3%83%84%E3%83%81%E3%83%8E%E3%82%B3&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">ツチノコ<span class="traffic">200+</span></a>
+    <a href="https://x.com/search?q=%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%BA%E3%81%AE%E6%97%A5&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">スターウォーズの日<span class="traffic">500+</span></a>
+    <a href="https://x.com/search?q=%E3%83%8F%E3%83%BC%E3%83%A2%E3%83%8B%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">ハーモニーランド<span class="traffic">100+</span></a>
+    <a href="https://x.com/search?q=%E5%B0%8F%E9%87%8E%E5%AF%BA%E4%BA%94%E5%85%B8&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">小野寺五典<span class="traffic">1000+</span></a>
+    <a href="https://x.com/search?q=%E9%87%8E%E5%91%82%E4%BD%B3%E4%BB%A3&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">野呂佳代<span class="traffic">2000+</span></a>
+    <a href="https://x.com/search?q=pltr&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">pltr<span class="traffic">200+</span></a>
+    <a href="https://x.com/search?q=%E4%B8%8A%E9%87%8E%E5%8B%95%E7%89%A9%E5%9C%92&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">上野動物園<span class="traffic">200+</span></a>
+    <a href="https://x.com/search?q=%E3%83%9B%E3%83%AB%E3%83%A0%E3%82%BA%E6%B5%B7%E5%B3%A1%E5%86%AC%E6%99%AF%E8%89%B2&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">ホルムズ海峡冬景色<span class="traffic">200+</span></a>
+    <a href="https://x.com/search?q=%E6%9D%B1%E4%BA%AC%E9%A7%85&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">東京駅<span class="traffic">200+</span></a>
+  </div></div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank gold">1</div>
+      <div class="card-title">
+        <span class="category-badge cat-nisa">NISA・投資入門</span>
+        <div class="news-title">愛車はベンツ、高級クラブは月12回…資産5億円を継いだ「俺は富裕層だぞ！」が口癖の70歳男性、“借金”5億円を抱え姿を消した〈悲惨な末路〉【FPが解説】 - ゴールドオンライン</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>資産5億円継承も借金5億円で消えた富裕層男性</td></tr>
+      <tr><td>Xフック文</td><td><strong>えっ借金5億円も抱えてたの？資産5億円富裕層の悲惨な末路</strong></td></tr>
+      <tr><td>バズる理由</td><td>驚きの借金額と富裕層話題</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+      <tr><td>情報源</td><td>ゴールドオンライン（2026/05/03）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">資産5億円を継いだ70歳男性が借金5億円も抱えて姿を消したって話、マジで意味わかんなくない？？？？？富裕層でも借金で転落するなんて怖すぎるよね？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">資産5億円あっても借金5億円だと普通に破産じゃない？こんな富裕層いるなんて逆説的すぎるし、資産継いでも意味ないって話じゃない？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">借金5億円ってどんだけヤバいの？資産継承してもこれじゃもう何も信じられない？？？？？富裕層の実態って怖すぎるよ…</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTFA4dGlHRXpIaTB5MWZOMU5PV0NQbnpuUXpLakUzaXBGR2QxWmgzZzNVVnBnUV9LcERZNkdGYkxwUWZ5RXNrU2RDNEdiVUlicDhIX1JDT0pteE1peWM?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E5%80%9F%E9%87%915%E5%84%84%E5%86%86&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank silver">2</div>
+      <div class="card-title">
+        <span class="category-badge cat-macro">エンタメ</span>
+        <div class="news-title">『鬼滅の刃 無限城編』興収280億円突破でタイタニック抜き国内歴代3位！千と千尋も射程圏内か - ウォーカープラス</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>鬼滅無限城編興収280億円突破！国内歴代3位</td></tr>
+      <tr><td>Xフック文</td><td><strong>マジか！『鬼滅の刃 無限城編』興行収入280億円突破で歴代3位に急浮上</strong></td></tr>
+      <tr><td>バズる理由</td><td>大ヒット映画興行収入</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐⭐</span> (8/10)</td></tr>
+      <tr><td>情報源</td><td>ウォーカープラス（2026/05/03）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">『鬼滅の刃 無限城編』が興収280億円突破で国内歴代3位に！千と千尋も射程圏内ってマジで凄すぎるよね？こんなヒット、みんな見に行った？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">映画興収ランキングはみんな言うけどさ、280億円って本当にそんなにすごい？でも千と千尋も狙えるって話だから、やっぱりバケモノ級だよね？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">280億円って何でそんなに稼げるの？？？？？映画だけでそんなにお金動くの意味わかんなくない？？？ファンの力ってすごすぎるよ！</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTFBnbE1raXVrem5fTzh0X2h1TmExdncyNzRMc2hOc2lRZWU0Q3ZLcHlJemFRYmNTMWlrZkpQVlducnZoMk9EVUd6ek8wdTdNNWZlU1RxZTh30gFbQVVfeXFMT0pDRXpGT2hRVEllMG1LM0lzR0w3ZWh1bDdzR25lalpfZm5FbTRud2VsTk5RN2N2V01oQTNRQ1VmRlZpZGkxYjZ0N0UzUUVvajRWZVRyNzVOTmlnYw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E9%AC%BC%E6%BB%85%E8%88%88%E5%8F%8E&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank bronze">3</div>
+      <div class="card-title">
+        <span class="category-badge cat-z">テクノロジー</span>
+        <div class="news-title">トヨタ「GRヤリス／GRカローラ」が激変!? スマホで走りが変わる「画期的機能」がまもなく登場！ 「あとから愛車が進化する」仕組みに既存オーナーも歓喜！ 新機能「GRパフォーマンスソフトウェア」とは？ - くるまのニュース</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>トヨタ新機能で愛車がスマホで進化！</td></tr>
+      <tr><td>Xフック文</td><td><strong>知らなかった！トヨタの新機能でスマホから愛車の性能アップが可能に</strong></td></tr>
+      <tr><td>バズる理由</td><td>話題の自動車新技術</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+      <tr><td>情報源</td><td>くるまのニュース（2026/05/01）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">トヨタのGRヤリスとかカローラがスマホで走りが変わる新機能を搭載！あとから愛車が進化するって、既に買った人はめっちゃ嬉しいよね？これ知らなかった人多そう？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">スマホで車の性能アップってみんな言うけどさ、結局壊れやすくなるんじゃない？でもトヨタの新機能はユーザーも歓喜してるし、これは新しい時代かも？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">車の性能をスマホで変えられるなんて本当に必要なの？？？？？それで壊れたらどうするの？って自分だけ？？？便利すぎて逆に不安になるよね？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiS0FVX3lxTE9EWGJPU2d3UFhScG1wOVNLaDVZY0dWZmlPQ0hTcGxuNXZmYm9iUWNsaGhQaV9Wcm9GcG9JSjZvdTU0aXRUWnhKMjBHOA?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E3%83%88%E3%83%A8%E3%82%BF%E6%96%B0%E6%A9%9F%E8%83%BD&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">4</div>
+      <div class="card-title">
+        <span class="category-badge cat-nisa">NISA・投資入門</span>
+        <div class="news-title">新NISAブームの裏で急増する「NISA貧乏」を知っているか…日経平均株価6万円の裏で「投資を後悔する人たち」【FPが警告】 - ゴールドオンライン</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>新NISAで「NISA貧乏」増加の警告</td></tr>
+      <tr><td>Xフック文</td><td><strong>え、NISAで損する人が増えてる？新NISAの落とし穴に注意！</strong></td></tr>
+      <tr><td>バズる理由</td><td>新NISAリスク警告</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+      <tr><td>情報源</td><td>ゴールドオンライン（2026/05/02）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">新NISA使ってる友達が「NISA貧乏」って言われてるらしいよ。投資初心者は損するリスクもあるってマジ？みんな気をつけたほうがいいよね？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">NISAってみんな良いって言うけどさ、実は貧乏になるリスクもあるって知ってた？節約の達人でも否定的な意見あるし、これは知らないと損する？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">新NISAで損してる人が増えてるって本当？？？？？投資初心者に勧めるのは無理ある気がする？？？ちゃんとリスク説明してほしいよね？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE4zWHZhdTZ6WV9sVHpveHlld0VGS1h4d2RaSFhxbS1NUElST3NGQlRKVjBmOE5GckdqWVBoOFhlZW1OUl96TG9YTDFMdjF0NDltU2c?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=NISA%E8%B2%A7%E4%B9%8F&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">5</div>
+      <div class="card-title">
+        <span class="category-badge cat-tax">制度・ルール変更</span>
+        <div class="news-title">4月から「たばこ税」増税で、愛用のメビウスが「520円→550円」に値上げ！ 妻は「禁煙すればベンツが買える」と言いますが“1日1箱×30年”で高級車は買えますか？ 紙巻・加熱式の税率も確認（ファイナンシャルフィールド） - Yahoo!ニュース</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>4月たばこ税増税でメビウス550円に値上げ</td></tr>
+      <tr><td>Xフック文</td><td><strong>えったばこ520円→550円に？値上げで高級車買えるって本当？</strong></td></tr>
+      <tr><td>バズる理由</td><td>たばこ税増税話題</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+      <tr><td>情報源</td><td>Yahoo!ニュース（2026/05/03）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">4月からたばこ税が増税されて、メビウスが520円から550円に値上げ！1日1箱30年吸うと高級車買えるって話だけど本当かな？みんな禁煙したほうがいいよね？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">たばこ値上げはみんな反対だけど、結局1日1箱吸い続けたら高級車買えるくらい無駄遣いしてるってこと？節約するなら禁煙が一番かも？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">たばこ税増税でこんなに値上げする意味わかんなくない？？？？？健康のためとはいえ、これで国民に投資しろって無理ある気がする？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1US0NWQ2E3a0dvYWRmN0hFOGlEQjJ3LXVZa3Ezc1JMS1lhcFRmX2ZRQ3RGN0NtQWx6NnpJWUJJVEpOekhCdkRwV0lHb0pEQmZOSEtZZGFNbW1WcnhiY3ZrUGtsUDJxVE9TdXpzQ0c5djItSFo2R1FtNnlFY2tETGs?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E3%81%9F%E3%81%B0%E3%81%93%E5%A2%97%E7%A8%8E&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">6</div>
+      <div class="card-title">
+        <span class="category-badge cat-price">物価・生活費</span>
+        <div class="news-title">「かなり苦しいが、踏ん張りながら…」スーパーマーケットは“食品以外”の値上げに苦悩 電気料金も値上がりへ 新潟 - TBS NEWS DIG</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>スーパーマーケット食品以外も値上げ苦悩</td></tr>
+      <tr><td>Xフック文</td><td><strong>えっ食料品だけじゃない？電気代も値上げラッシュで家計直撃！</strong></td></tr>
+      <tr><td>バズる理由</td><td>生活直撃の物価上昇</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>TBS NEWS DIG（2026/05/01）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">スーパーが食品以外も値上げしてるらしいよ。電気料金も上がってて、生活費圧迫されてる人多そうじゃない？これからどうやって節約すればいいのかな？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">物価上昇って食品だけじゃなくて電気代も値上げラッシュってやばくない？生活費がどんどん増えていく感じ、これって普通に怒るよね？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">食費だけじゃなく電気代も値上げって生活直撃すぎない？？？？？節約しても追いつかない気がしてもう真面目に働くの馬鹿らしくない？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTFBmRDNuRnRmcTVfTjgwZVp4MDhibVpvd3lIdW13OERONlBXN3ZsNl80QVNTdGh2bXhtV3lkZzJVUWJBQmdPRm5sVHoyWkxhbjZUcmlrYWlBV3RSeDFBemV3QlB6WQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E9%A3%9F%E5%93%81%E5%80%A4%E4%B8%8A%E3%81%92&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">7</div>
+      <div class="card-title">
+        <span class="category-badge cat-macro">エンタメ</span>
+        <div class="news-title">【イオン（8267）の株主優待】6月からイオンシネマが2000円に値上げへ。2月に拡充された優待「オーナーズカード」いつ届く? 映画で使える優待の内容と使い方 - MSN</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>イオンシネマが6月から2000円に値上げ</td></tr>
+      <tr><td>Xフック文</td><td><strong>知らなかった！イオンシネマの映画料金が2000円に値上げ決定</strong></td></tr>
+      <tr><td>バズる理由</td><td>映画館料金値上げ</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>MSN（2026/05/01）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">6月からイオンシネマが映画料金2000円に値上げするらしいよ。優待もあるけど普通に行くと高く感じるよね？これで映画頻繁に行く人はどうするのかな？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">映画館料金が2000円になるってみんな言うけどさ、配信サービスの方がコスパ良くなる気もするよね？でも映画館の価値もあるし、悩ましい問題？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">映画館料金2000円って普通に高すぎない？？？？？好きな映画見るためにこんなに払うのって普通じゃないでしょ？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMi_wdBVV95cUxOLWI3eG9NcUNCb2x1bUpLTjhkYWVqYlZUR09HTGpiU0s0QldLNExsMjFBR19LWU5sUEdzb3dMRHcxZlAtU2xuVGFoUmRVQUo4R1A2SDVZell4N0VJOW5DelZaUWdod2RMaE9KLWdVakhpeTBBbFNKMkZUcG5QVnpOVmJ1amUyWnhjQXZyaHl1S0lvaVljM3FxX2ZGNXMzSm9wUmprMTNnSE1GMlp0YjdsOWtMaU5xdU01SHY5OXRocmZWTjdKQVRaajNoUjR0NElaUXRJZnV1enhOcTdJRkNqelZwUlBoLURweldDVXRqMnpnMzM2OFBDakJDNlI4N2p1TVF2MW5JaUxnU0FmYnVaMTg1SldkdWtfMU9jVnoxTURhaGlDS3pTOVIzTnJJdzhSd0lwem5DN3VoeXV5SHpOR0xPc0IyQWdWYnlmektldk9IWFNuNE1udXJhX2hzcllwenc3b0F2Q3NJVklEU3BxUDhwREdoR2RmT3h2ejZmYW8xU0h5clhabWtWRkRvN29vWU1WVk9FUlRRQnZtRXUtQnk2UHVfZlcyTnF1QVJEZUtwNWQwUGFNSVpLUEZWMmplVHJiXy1CMzRJaTZERlB6akRpUTR2ZTE5NGM0emRhMktOdm00TjNXWVlOVVhYRW5GMEJWYjBOeW5TR3VUYkpQc041enNHSUhfSDlidldiQnVKaFNzWEhBdE1kc0d0VUV6N0ozdnk0VURPM1YzRDlQS2NRUnREQksxenBRb25WRjVKZVRfS29jalUyUUk1aUlTNkplSFBZMWx6VGNRWkJPV2xkcWRvbFFSWHFtdk0wakNGTnVPeDRBMDFIZ0lPdG9zYUQ1eThLRk5ueXUzSnRob1FjZElBRXZJTTVrMjZLMDVWNDNZdExZWDk3NG84c25fa1NuZkVEQ2FMTkdfY0p2T3hDdy1pZ1E2cFZPeVhfRV9OWlZZMlUwRVZYamNTT1ZfOUJzUGNrLUJSSmVtUERON29PMWUwMHpHYUdpUGw5bjlHQUJ2NV9fdm8tdi1uNXotcUpXRnNRa0VoUFBEdWJ5LXA1Y0hFMDFGeFBWVUpYUkdkckJqUVpDMEwwQXViTHVJbGduQ0FGNXRYcjlXbFJjWm5nRFJyYVJGbWF5VDJ1UXgwMGQ1TnlsWG80UllFNGtyaFdvb3k0YnQyV1pSTE1oWTZZVllISC0zdkc0dXZLYW9xRmlHc3VlSVdGUHNuanNiRlhpOWhnekVpckhUVER4dDhzTXhuaUpmeGpsZ3VNRXJSRTdrN0Y0T1dvVndMRjJQMGtsSjZHQ0tXX0JZWmttZHEwYjBCSHBjMmFHUjZoM1RnRklaUVZyenpxVUdWWWs?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%B7%E3%83%8D%E3%83%9E%E5%80%A4%E4%B8%8A%E3%81%92&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">8</div>
+      <div class="card-title">
+        <span class="category-badge cat-work">退職・働き方</span>
+        <div class="news-title">退職代行「モームリ」サービス受け付け再開でも…もう無理な社内の実態｜経済ニュースの核心 - 日刊ゲンダイDIGITAL</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>退職代行「モームリ」再開も社内は無理状態</td></tr>
+      <tr><td>Xフック文</td><td><strong>知らなかった！退職代行サービス再開でも社内のブラック現状に変化なし</strong></td></tr>
+      <tr><td>バズる理由</td><td>退職代行サービス問題</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>日刊ゲンダイDIGITAL（2026/05/02）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">退職代行「モームリ」がサービス再開したけど、社内の状況はもう無理って状態らしいよ。ブラック企業問題、まだまだ解決しないのかな？みんな耐えられる？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">退職代行ってみんな使うけど、結局社内がブラックだと意味なくない？？？サービス再開しても根本解決になってない気がするよね？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">退職代行使っても会社がブラックすぎるの？？？？？真面目に働くの馬鹿らしくない？？？こんな状況、普通じゃないでしょ？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE56bzc3YURCZ1AzeTZOZGtfSk1qM1VmZFY0OXhfck9GdXM0d0ZSMzRDclN5TGZWQ0hEVW9jNlBFd3FhMXpHOGNyS1UxQmk1bXpVc0txekxPOUIyV04yakd3SVdMN0dENHc?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E9%80%80%E8%81%B7%E4%BB%A3%E8%A1%8C&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">9</div>
+      <div class="card-title">
+        <span class="category-badge cat-salary">税金・手取り</span>
+        <div class="news-title">JR運賃改定で「通勤手当1万円」増えたら、なぜか“社会保険料”が「年3万4000円」増えた！ 通勤費にも“課税される”なんて理不尽じゃないですか!? 月収32万円のケースで解説（ファイナンシャルフィールド） - Yahoo!ニュース</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>JR運賃改定で通勤手当増も社会保険料増加</td></tr>
+      <tr><td>Xフック文</td><td><strong>えっ通勤手当1万円増で社会保険料3万4000円も増えるの？理不尽すぎ！</strong></td></tr>
+      <tr><td>バズる理由</td><td>手当と社会保険料の矛盾</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>Yahoo!ニュース（2026/05/03）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">JRの運賃上がって通勤手当1万円増えたけど、社会保険料が年3万4000円も増えたってマジ？手当増えるのに手取り減るって意味わかんなくない？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">通勤手当の増額は喜ばしいけど、社会保険料が増えるのってみんな言うけど理不尽だよね？これって賃上げより怖いかも？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">通勤手当増えても社会保険料で引かれて結局損するって普通じゃないでしょ？？？？？これで真面目に働くの馬鹿らしくない？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE5EVk1TLWtMbTFmZzlaeTB3LW1vci1fWWt3UV9sanZleFRvNVdNWWI3M3lvNlNwRXdQcGpXaXdMN2xBYUdIVFJNdjY0S3NOTVEwOGw0b3BzaldFMUxMdGR2eExGbW9CcHltbmlrMW8tLTZCTHBzZERaM3JxYm16dVU?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E9%80%9A%E5%8B%A4%E6%89%8B%E5%BD%93%E5%A2%97%E5%8A%A0&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">10</div>
+      <div class="card-title">
+        <span class="category-badge cat-market">経済</span>
+        <div class="news-title">総菜・カット野菜製造会社が破産 高級焼き肉店運営会社も 沖縄4月の倒産は5件 - 沖縄タイムス社</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>4月沖縄で高級焼肉店運営会社など倒産5件</td></tr>
+      <tr><td>Xフック文</td><td><strong>えっ高級店も倒産？沖縄で4月倒産5件発生の衝撃</strong></td></tr>
+      <tr><td>バズる理由</td><td>地域倒産ニュース</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐</span> (5/10)</td></tr>
+      <tr><td>情報源</td><td>沖縄タイムス社（2026/05/03）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">沖縄で4月に倒産5件あったって。高級焼肉店運営の会社まで倒産してるらしいよ。地方の景気ってやっぱり厳しいんだね？これからどうなるのかな？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">倒産ってみんな怖いけど、高級店まで倒産するってやばくない？景気悪化の影響が広がってるってことだよね？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">高級焼肉店の倒産とかどういうこと？？？？？地方の経済がこんなに厳しいなんて意味わかんなくない？？？今のうちに備えたほうがいいよね？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE5NZnl3d2JqSzBZUEtYeXdKZ1Y2a05sSnBMWWotM3U3TzdzME5CWDJYUmVkVWZ1QlNpaS1tT1ZoYUFYa2NSZGxfcDRtTldBbGlyTTBFOEZyT0VmREwtR2c?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E6%B2%96%E7%B8%84%E5%80%92%E7%94%A3&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="tips-section">
+    <h2>📌 バズ投稿を作る3つのコツ</h2>
+    <ul class="tips">
+      <li><span class="tip-num">1</span><span>冒頭に<strong>「私も〇〇だった」という共感ストーリー</strong>を入れると伸びやすい</span></li>
+      <li><span class="tip-num">2</span><span><strong>具体的な数字</strong>（〇〇円、〇〇%、〇〇万人）を使うとリアリティが増す</span></li>
+      <li><span class="tip-num">3</span><span>最後に<strong>「あなたはどう思いますか？」</strong>と問いかけると返信が増える</span></li>
+    </ul>
+  </div>
+</div>
+<footer>
+  <p>このレポートは自動生成されました。投資は自己責任でお願いします。</p>
+  <p>生成日時: 2026-05-04 07:41</p>
+</footer>
+</body>
+</html>
