@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>📊 株クラ朝刊 2026年06月26日（金）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #ffffff; color: #1a1a1a; font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif; line-height: 1.75; font-size: 15px; }
+  .page-header { border-bottom: 1px solid #e5e7eb; padding: 28px 24px 20px; max-width: 780px; margin: 0 auto; }
+  .page-header h1 { font-size: 1.6rem; font-weight: 700; color: #111; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .page-header .meta { margin-top: 6px; font-size: 0.82rem; color: #6b7280; }
+  .page-header .desc { margin-top: 4px; font-size: 0.88rem; color: #374151; }
+  .container { max-width: 780px; margin: 0 auto; padding: 24px 24px 80px; }
+  .date-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb; }
+  .date-nav a { background: #f3f4f6; border: 1px solid #e5e7eb; color: #374151; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; text-decoration: none; transition: all 0.15s; }
+  .date-nav a.active { background: #e94560; border-color: #e94560; color: #fff; font-weight: 600; }
+  .date-nav a:hover:not(.active) { background: #e5e7eb; }
+  .trends-section { background: #fafafa; border: 1px solid #e5e7eb; border-left: 4px solid #e94560; border-radius: 8px; padding: 16px 20px; margin-bottom: 32px; }
+  .trends-section h2 { font-size: 0.95rem; font-weight: 700; color: #e94560; margin-bottom: 12px; }
+  .trend-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .trend-tag { background: #fff; border: 1px solid #d1d5db; border-radius: 20px; padding: 3px 12px; font-size: 0.8rem; color: #374151; text-decoration: none; transition: all 0.15s; }
+  .trend-tag:hover { background: #e94560; border-color: #e94560; color: #fff; }
+  .trend-tag .traffic { color: #f5a623; font-size: 0.72rem; margin-left: 4px; }
+  .news-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px 22px; margin-bottom: 20px; transition: box-shadow 0.15s; background: #fff; }
+  .news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+  .rank { background: #e94560; color: #fff; font-size: 0.9rem; font-weight: 700; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .rank.gold { background: #f5a623; }
+  .rank.silver { background: #9ca3af; }
+  .rank.bronze { background: #cd7f32; }
+  .card-title { flex: 1; }
+  .category-badge { display: inline-block; font-size: 0.7rem; padding: 2px 10px; border-radius: 20px; margin-bottom: 5px; font-weight: 600; background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+  .cat-tax { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+  .cat-work { background: #dcfce7; color: #16a34a; border-color: #86efac; }
+  .cat-price { background: #dbeafe; color: #2563eb; border-color: #93c5fd; }
+  .cat-salary { background: #fef9c3; color: #ca8a04; border-color: #fde047; }
+  .cat-nisa { background: #cffafe; color: #0891b2; border-color: #67e8f9; }
+  .cat-market { background: #f3e8ff; color: #9333ea; border-color: #d8b4fe; }
+  .cat-macro { background: #ffedd5; color: #ea580c; border-color: #fdba74; }
+  .cat-z { background: #e0e7ff; color: #4338ca; border-color: #a5b4fc; }
+  .cat-default { background: #f3f4f6; color: #6b7280; border-color: #d1d5db; }
+  .news-title { font-size: 0.97rem; font-weight: 700; color: #111; line-height: 1.55; }
+  .info-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85rem; }
+  .info-table td { padding: 7px 10px; border: 1px solid #e5e7eb; vertical-align: top; }
+  .info-table td:first-child { width: 90px; font-weight: 600; color: #6b7280; background: #f9fafb; white-space: nowrap; }
+  .info-table td:last-child { color: #1a1a1a; }
+  .stars { color: #f5a623; }
+  .template-section { margin-top: 14px; border-top: 1px dashed #e5e7eb; padding-top: 14px; }
+  .template-section h4 { font-size: 0.82rem; font-weight: 700; color: #6b7280; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .template-label { font-size: 0.72rem; font-weight: 700; color: #e94560; margin-top: 10px; margin-bottom: 4px; }
+  .template-label:first-of-type { margin-top: 0; }
+  .template-box { background: #f9fafb; border: 1px solid #e5e7eb; border-left: 3px solid #e94560; border-radius: 0 6px 6px 0; padding: 10px 14px; font-size: 0.85rem; color: #374151; line-height: 1.7; margin-bottom: 8px; }
+  .card-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 6px; font-size: 0.8rem; text-decoration: none; font-weight: 500; transition: all 0.15s; border: 1px solid; }
+  .btn-news { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+  .btn-news:hover { background: #2563eb; color: #fff; }
+  .btn-x { background: #f9fafb; color: #374151; border-color: #d1d5db; }
+  .btn-x:hover { background: #111; color: #fff; border-color: #111; }
+  .tips-section { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 20px 22px; margin-top: 32px; }
+  .tips-section h2 { font-size: 1rem; font-weight: 700; color: #92400e; margin-bottom: 14px; }
+  .tips { list-style: none; }
+  .tips li { padding: 8px 0; border-bottom: 1px solid #fde68a; font-size: 0.88rem; display: flex; gap: 10px; align-items: flex-start; color: #374151; }
+  .tips li:last-child { border-bottom: none; }
+  .tip-num { background: #f5a623; color: #fff; font-weight: 700; font-size: 0.72rem; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 3px; }
+  footer { text-align: center; padding: 24px; color: #9ca3af; font-size: 0.75rem; border-top: 1px solid #e5e7eb; margin-top: 40px; }
+  @media (max-width: 600px) {
+    .page-header, .container { padding-left: 16px; padding-right: 16px; }
+    .page-header h1 { font-size: 1.25rem; }
+    .info-table td:first-child { width: 70px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page-header">
+  <h1>📊 株クラ朝刊 ── 2026年06月26日（金）</h1>
+  <div class="meta">毎朝8時配信｜株クラ初心者向けトレンドニュース10選</div>
+  <div class="desc">お金・働き方・投資の「今日の話題」をまとめました。Xの発信ネタにご活用ください。</div>
+</div>
+<div class="container">
+  <div class="date-nav">
+    <a href="20260626.html" class="active">2026/06/26</a>
+    <a href="20260625.html" class="">2026/06/25</a>
+    <a href="20260624.html" class="">2026/06/24</a>
+    <a href="20260623.html" class="">2026/06/23</a>
+    <a href="20260622.html" class="">2026/06/22</a>
+    <a href="20260621.html" class="">2026/06/21</a>
+    <a href="20260620.html" class="">2026/06/20</a>
+  </div>
+  <div class="trends-section"><h2>🔥 本日のGoogleトレンド（日本）</h2><div class="trend-tags">
+    <a href="https://x.com/search?q=%E3%83%80%E3%82%BE%E3%83%BC%E3%83%B3&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">ダゾーン<span class="traffic">20000+</span></a>
+    <a href="https://x.com/search?q=%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%20%E4%B8%AD%E7%B6%99&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">ワールドカップ 中継<span class="traffic">1000+</span></a>
+    <a href="https://x.com/search?q=%E3%83%80%E3%82%BE%E3%83%BC%E3%83%B3%20%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">ダゾーン サッカー<span class="traffic">2000+</span></a>
+    <a href="https://x.com/search?q=%E3%83%AA%E3%83%B3%E3%83%87%E3%83%AD%E3%83%95&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">リンデロフ<span class="traffic">500+</span></a>
+    <a href="https://x.com/search?q=%E6%96%87%E5%8C%96%E6%94%BE%E9%80%81&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">文化放送<span class="traffic">200+</span></a>
+    <a href="https://x.com/search?q=daz&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">daz<span class="traffic">200+</span></a>
+    <a href="https://x.com/search?q=dazn&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">dazn<span class="traffic">20000+</span></a>
+    <a href="https://x.com/search?q=nhk&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">nhk<span class="traffic">20000+</span></a>
+    <a href="https://x.com/search?q=%E3%83%AF%E3%83%BC%E3%82%8B%E3%82%AB%E3%83%83%E3%83%97%E6%97%A5%E6%9C%AC&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">ワーるカップ日本<span class="traffic">2000+</span></a>
+    <a href="https://x.com/search?q=%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%83%E3%83%97%20%E3%83%A9%E3%82%B8%E3%82%AA&amp;src=typed_query&amp;f=top" target="_blank" class="trend-tag">ワールドカップ ラジオ<span class="traffic">1000+</span></a>
+  </div></div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank gold">1</div>
+      <div class="card-title">
+        <span class="category-badge cat-market">経済</span>
+        <div class="news-title">株価7万円超・金利1％・進む円安…日本経済の未来シナリオ - TVer</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>日本経済の未来シナリオを解説</td></tr>
+      <tr><td>Xフック文</td><td><strong>株7万円超・円安進行…私たちの生活どうなる？</strong></td></tr>
+      <tr><td>バズる理由</td><td>生活直撃の経済展望</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+      <tr><td>情報源</td><td>TVer（2026/06/25）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">株価が7万円超えて円安も進行中。これって僕らの生活にどう影響するの？給料や物価、何か備えた方がいいのかな？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">株価が7万円超えってみんな喜ぶけど、円安進むと輸入品は高くなるし生活苦しくなる面もあるよね？どっちがホントに怖いか分かる？？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">円安と株高が同時に進んでるけど、給料は上がらないし物価ばかり上がるのって普通じゃないでしょ？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiS0FVX3lxTE9hUHZpZFlBMk5kS1B2NTI5SzI1TV9BMURPbDZVaHVpQWE5VG5lUnZ3OWVUc2dwczFLM1NZcFQ0bjVveWZtQ1pyby1sVQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E6%97%A5%E6%9C%AC%E7%B5%8C%E6%B8%88%E6%9C%AA%E6%9D%A5&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank silver">2</div>
+      <div class="card-title">
+        <span class="category-badge cat-macro">エンタメ</span>
+        <div class="news-title">映画料金は3000円時代へ？ 興収は過去最高なのに…なぜ映画鑑賞料金は上がり続けるのか。TOHOシネマズ値上げの裏事情 - Yahoo!ニュース</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>映画料金は3000円時代へ値上げ進む</td></tr>
+      <tr><td>Xフック文</td><td><strong>映画館料金が3000円？見に行けなくなる人続出かも</strong></td></tr>
+      <tr><td>バズる理由</td><td>生活直撃の料金値上げ</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+      <tr><td>情報源</td><td>Yahoo!ニュース（2026/06/25）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">最近映画館の料金が3000円に迫ってるらしい。昔は1000円台だったのに…これじゃ気軽に映画行けなくなるよね？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">映画料金が高すぎるってみんな言うけど、制作費や配信が増えてるから仕方ない？でも3000円はちょっと高すぎじゃない？？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">映画料金が3000円近くなるって、昔より3倍も上がってる？これで映画館離れ加速しない？？真面目に映画好きがかわいそうだよ？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE45R0dsa1ZFSEFwNGdtcVZNdENpZm04VDlSWHI1TVgycjJ4dklCZC1mYVBVZnJXaC1pQ29adVlIVnFuU21faTBQOUpJbEtJa1RpS0tZQThTV2RzUndtcHVSTjNFQURlWGV3Ukg2RFNDbEs1SmRQNnkxUXU5ZHhVcGc?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E6%98%A0%E7%94%BB%E6%96%99%E9%87%91%E5%80%A4%E4%B8%8A%E3%81%92&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank bronze">3</div>
+      <div class="card-title">
+        <span class="category-badge cat-market">経済</span>
+        <div class="news-title">日産が早期退職募集 国内５工場の事務職：時事ドットコム - 時事ドットコム</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>日産が早期退職募集、リストラ策強化</td></tr>
+      <tr><td>Xフック文</td><td><strong>日産で早期退職募集開始…働き方の未来はどうなる？</strong></td></tr>
+      <tr><td>バズる理由</td><td>大手企業のリストラ動向</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+      <tr><td>情報源</td><td>時事ドットコム（2026/06/25）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">日産が国内5工場の事務職を対象に早期退職募集を始めたって。周りでもリストラの噂増えてるけど、これからどうなるの？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">早期退職募集ってみんな嫌がるけど、会社のために仕方ない？それとも自分のキャリア的には悪手？？？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">大手の日産で早期退職募集が広がってるけど、正社員でも安心できないのって普通じゃないでしょ？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE1QMUc0R1dXT0N6MEZYRkFvWXFhSnViU0N1c2x0WHcyQV92R085cUl3NWVZSndMTDJFNnRuZFlsOHJrcTVweVotRF9qQl9PVXRqLTdqRHYyTW1HU3ZwbllueUVGWQ?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E6%97%A5%E7%94%A3%E6%97%A9%E6%9C%9F%E9%80%80%E8%81%B7&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">4</div>
+      <div class="card-title">
+        <span class="category-badge cat-nisa">NISA・投資入門</span>
+        <div class="news-title">止まらない食品値上げ、資産防衛は新NISAでどう備えるか (2026年6月23日掲載) - ライブドアニュース</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>食品値上げ続く中、新NISAで資産防衛</td></tr>
+      <tr><td>Xフック文</td><td><strong>食品がどんどん値上げ！新NISAで備えるべき？</strong></td></tr>
+      <tr><td>バズる理由</td><td>物価高対策と投資入門</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+      <tr><td>情報源</td><td>ライブドアニュース（2026/06/23）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">食品の値上げが止まらないけど、新NISAで資産防衛できるって聞いた。投資初心者でも始めやすいって本当？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">食品値上げ続くけど、節約だけじゃ追いつかない。新NISAが救世主ってみんな言うけど、リスクはないの？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">物価上昇に対抗するために新NISAで投資始める人増えてるけど、損する可能性もあるのにみんな飛びついて大丈夫？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTE1VeHcxZHRNTFp3YTlOa3B3NWxhV2RhYkRPN3JhUnlTMk1Zdjc4YUhCTkZsTjF6MlJCaThLM00xY2cyVTExRzVrUEtMQkJhenJ2LUpQZHdWc3AxT3E0V3c?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E9%A3%9F%E5%93%81%E5%80%A4%E4%B8%8A%E3%81%92NISA&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">5</div>
+      <div class="card-title">
+        <span class="category-badge cat-macro">エンタメ</span>
+        <div class="news-title">NHK受信料「値上げの時期」に世論の反発強まる スクランブル化全否定の井上会長発言との“ダブルパンチ” - ｄメニューニュース</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>NHK受信料値上げ時期に反発強まる</td></tr>
+      <tr><td>Xフック文</td><td><strong>NHK受信料値上げで世論が大炎上！なんで払わなきゃ？</strong></td></tr>
+      <tr><td>バズる理由</td><td>生活に直結の値上げ問題</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐⭐</span> (7/10)</td></tr>
+      <tr><td>情報源</td><td>ｄメニューニュース（2026/06/25）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">NHKの受信料値上げの時期が近づいてきて、世論の反発がすごい。払いたくないけどどうしたらいい？みんなはどうしてる？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">NHK受信料値上げってみんな不満だけど、テレビ見てるなら仕方ない？それとも払わない方法ある？？？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">NHK受信料値上げの話、3年連続赤字なのに値上げって意味わかんなくない？？？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMimgFBVV95cUxOSFdNdjFRN3BKWEY5MENTNzF2Qkl4aHp4VlJVTXBzdHlFLXNic1Z5bFp4UmNOMU1GN2o1MGMxNmZKckhIS25Sd3lGUTNpbWRJQzlHOFZGNElaTmU0WkloaUJUU1hSa3V0RnZPMVF6bTNiOHkwbVU4TUM2U2pSTHZpYmhDUnd1UFh2Vm10RGJ3UVNiSDZkaVRCaW5R0gGWAUFVX3lxTE9pMzdrWWtBWWdJbUVLNnBHVkZVOS1DMDR1dUk4aURYMVJfTnVCNWZxNC1OS2hVZzRBcG12LTFrUDFFVjRGMUJIN0hpcTJMTlQzWGUtMDJVb1kwR1A1WTZiMkZTY01fMnZOY1E0Z1JCX1V4Z2ZwMm1WQ2FYLU40UkpTSk9JZTRQQkFLclozWmZYLTdGSGQxZw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=NHK%E5%8F%97%E4%BF%A1%E6%96%99%E5%80%A4%E4%B8%8A%E3%81%92&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">6</div>
+      <div class="card-title">
+        <span class="category-badge cat-default">芸能人×お金</span>
+        <div class="news-title">9歳息子が約45億の遺産を単独相続…ホテルから転落死した世界的人気歌手、財産は信託口座へ - スマートニュース</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>9歳息子が約45億円遺産を単独相続</td></tr>
+      <tr><td>Xフック文</td><td><strong>えっ、9歳で45億円の遺産ってマジ？信託口座って何？</strong></td></tr>
+      <tr><td>バズる理由</td><td>超大型遺産と未成年相続</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>スマートニュース（2026/06/23）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">ホテルから転落死した人気歌手の9歳息子が約45億円を単独相続。信託口座に管理されるらしいけど、子どもがこんな大金持つってどうなるの？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">9歳の子どもが45億円の遺産を相続って、信託口座で管理されるから安心って言うけど、実際どう使われるの？親がいないと大変じゃない？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">9歳で45億円の遺産ってなんで信託口座に入れるの？自分で使えないから？未成年の資産管理ってそんなに複雑なの？意味わかんなくない？？？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMi2wRBVV95cUxOMVQyQS1ITENReEgwZHVhTlpYZl9Rc3lUQ3pYXzA0Q1M2U3RnbXhld1k1SlAzRjZQd1NHa3JGZUpHbVJBLXZmUVhLQVJWV2ZRREY0bE1FV0tTRi1rWFUyOXpuMFRlZEhsT2ZUWkdIZjFmWVRjMlU0czBYVThWTHNFc3lPakRuck41UHV5QTh6bXNNamVMZXBmYWZieXIxZjIxbHdnX0hMd2Q5SXhqRzVnWFJjQWw1Q1JSWnJ5STdLejZIZ3dYWUF2RUFwSTJfOU5ZYnpOVEFjM2c3MFM5b3RIYmZwQVZlUEo4R0paYVEwRk5wUWZSNGRDYTdyelZzVW5sd1pJc2pVY3ZjcnNWdVBTQjBiUUZVSWo1b3hqd2VVcUFfTWRERkFYQnJNaXhvZE02QlBBTXJjb2xuNzdWY1NsNk1UNG9xejhmQ1pOVUNycjR1VXJ5YmdQUkVmeWZVZ3F3RHU4ZnhFS3liaG4xeG1TR3RaRjJxTTFCZ1FhamswRzl1YnJoenNBRzNmUHhqUzlEbUFGUE5uMEN6c1pvNWV4TlpNOWZ2YlZxdnFlaW5tTXhfdGRvNGZqSXFEbU9WMDFFN2VNV0U2djIwVGx2MHY1NjY2VnpWd0pBUk9GbFdlTTFCdFpScEhMYjhyMUpUd0JGa1Q0SFEzamk4YnhxVDFRR1pIS1NkaHctUjFQaFVoQnFwNE5OSHJ6eW9vWm9mX2ZMTHNxY19zY18yZ2FwM3VjQkpyX1BJOFBwU0JNOE40cC1BUzF6QTBnWlQyOWpsVllnUjFXdG5tT1c4NTA?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E6%AD%8C%E6%89%8B%E9%81%BA%E7%94%A3%E7%9B%B8%E7%B6%9A&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">7</div>
+      <div class="card-title">
+        <span class="category-badge cat-z">テクノロジー</span>
+        <div class="news-title">「Android 17」は何が進化した？ 新機能やアップデート内容をあらためてチェック - ケータイ Watch</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>Android 17の新機能を解説</td></tr>
+      <tr><td>Xフック文</td><td><strong>知らなかった！Android17でこんな便利機能追加されてた！</strong></td></tr>
+      <tr><td>バズる理由</td><td>最新スマホ機能紹介</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>ケータイ Watch（2026/06/23）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">Android17って何が進化したか知ってる？新機能で日常のスマホ操作がめっちゃ楽になるって話、これ知らないと損じゃない？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">みんなAndroid17はただのアップデートって思ってるけど、実は結構便利な新機能がいっぱい。使わないと損してる気がするよね？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">スマホの新機能で生活が変わるのに、まだAndroid17入れてない人多くない？便利なのに知らないのって普通じゃないでしょ？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1SNE95Q3gtVVRaOW1jT21LTG1HWFNQeXQyQnl1Uk1McVpVd3V6ODZmYjdUWHkybjhpRU1ORXVzU0w5YjI2UFNiWnR2LXFmRkV2Zk9VdHNPRUpzTUlWUG9zVG14eG55UDA?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=Android17%E6%96%B0%E6%A9%9F%E8%83%BD&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">8</div>
+      <div class="card-title">
+        <span class="category-badge cat-market">経済</span>
+        <div class="news-title">食料品消費税「1%」に落とし穴？　相次ぐ値上げに「減税のお得感は1カ月で相殺される」　外食産業への影響も懸念 - ｄメニューニュース</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>食品消費税1%の落とし穴と値上げ影響</td></tr>
+      <tr><td>Xフック文</td><td><strong>減税のはずが1カ月で元取れない？値上げ続く現実</strong></td></tr>
+      <tr><td>バズる理由</td><td>身近な消費税と物価問題</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>ｄメニューニュース（2026/06/26）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">食品の消費税が1%に下がったけど、値上げで減税分は1カ月で吹っ飛んじゃうらしい。これって結局損してるよね？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">消費税が1%に下がって嬉しいって言うけど、値上げが続いて結局損してる気がする。減税って本当に意味あるの？？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">食品消費税1%になったのに、値上げでお得感が1カ月しか続かないって意味わかんなくない？？？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMif0FVX3lxTFBuU0RGOHh1TkxZamp6TEZ5RHVxRlZBNUJmMFkzS2Y0WUNGSE1GYnc1T3phMXZEci1YMS12MnBfNW5LTU56YWVKa0Z1SVc2VnVoQ0ZUenNBblVMNzBrRDRFN21uMDNpZU9SSnBlTm9CXzJrSWw0eUlydnoxRndUbjTSAX9BVV95cUxQblNERjh4dU5MWWpqekxGeUR1cUZWQTVCZjBZM0tmNFlDRkhNRmJ3NU96YTF2RHItWDEtdjJwXzVuS01OemFlSmtGdUlXNlZ1aENGVHpzQW5VTDcwa0Q0RTdtbjAzaWVPUkpwZU5vQl8ya0lsNHlJcnZ6MUZ3VG40?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E9%A3%9F%E5%93%81%E6%B6%88%E8%B2%BB%E7%A8%8E%E5%80%A4%E4%B8%8A%E3%81%92&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">9</div>
+      <div class="card-title">
+        <span class="category-badge cat-macro">エンタメ</span>
+        <div class="news-title">画像 | 〈推し活アプリ最大手〉Weverse日本代表が明かす｢スーパーファン｣を生む仕組み､月間1200万人のデータ活用 - 東洋経済オンライン</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>推し活アプリWeverseの月間1200万人データ活用</td></tr>
+      <tr><td>Xフック文</td><td><strong>推し活アプリが月1200万人も利用！出費のリアルは？</strong></td></tr>
+      <tr><td>バズる理由</td><td>ファン消費の経済効果</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>東洋経済オンライン（2026/06/24）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">推し活アプリ『Weverse』が月間1200万人も利用してるらしい。グッズやチケットにどれだけお金かけてるか気にならない？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">推し活ってみんな楽しいって言うけど、月1200万人も使ってるなら相当な出費。これは本当に無駄じゃないの？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">推し活アプリで月1200万人が動いてるって、みんなそんなにお金使ってるの？推し活って普通の消費よりヤバい気がする？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMiV0FVX3lxTE1yaW45Q1EtanJDemVmV19ob1F6bF9nNXlxbmptVWhEb3dRTGpoVzZPZXAyLTBSUDVsTzBIOTRNSE0wenIzXzBYaWx2eG5oR2Q1MkkzWDdvcw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=Weverse%E6%8E%A8%E3%81%97%E6%B4%BB&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="news-card">
+    <div class="card-header">
+      <div class="rank ">10</div>
+      <div class="card-title">
+        <span class="category-badge cat-nisa">NISA・投資入門</span>
+        <div class="news-title">ボーナスは貯金か投資か？ 40代・50代の「お金の置き場所」と後悔しない順番 - au Webポータル</div>
+      </div>
+    </div>
+    <table class="info-table">
+      <tr><td>一言要約</td><td>40代・50代のボーナスの置き場所と後悔しない順番</td></tr>
+      <tr><td>Xフック文</td><td><strong>ボーナスは貯金？投資？40代50代の正解はコレ！</strong></td></tr>
+      <tr><td>バズる理由</td><td>投資初心者向け資金運用</td></tr>
+      <tr><td>バズスコア</td><td><span class="stars">⭐⭐⭐⭐⭐⭐</span> (6/10)</td></tr>
+      <tr><td>情報源</td><td>au Webポータル（2026/06/24）</td></tr>
+    </table>
+    <div class="template-section">
+      <h4>📝 投稿候補3パターン</h4>
+      <div class="template-label">【A】共感ストーリー型</div>
+      <div class="template-box">40代・50代でボーナスが出たら貯金する？それとも投資する？後悔しない順番や置き場所のコツって知ってる？</div>
+      <div class="template-label">【B】賛否・炎上型</div>
+      <div class="template-box">みんなボーナスは貯金が安全って言うけど、実は投資したほうがいい場合もある。どう判断すればいいか知りたい？？？</div>
+      <div class="template-label">【C】問いかけ・リプ狙い型</div>
+      <div class="template-box">ボーナスの使い道で迷ってる人多いけど、貯金だけじゃ増えないのに投資は怖いって普通じゃないでしょ？？？</div>
+    </div>
+    <div class="card-links">
+      <a href="https://news.google.com/rss/articles/CBMie0FVX3lxTE9MSlJvX0JCenQtSzNXNnZUcjdseTNfdTVHZW1oUkpzMG1IQUI5ejhfZk9KODh6RVNObklXdVB5TnUyUEdoYmtycS03ZUF6ZWtkQUFybGdQNG14WDViMGk3dDI5T2JZWmVTUTlBVWZYelNjaDZhNmNtSmRvbw?oc=5" target="_blank" class="btn btn-news">🔗 ニュース原文</a>
+      <a href="https://x.com/search?q=%E3%83%9C%E3%83%BC%E3%83%8A%E3%82%B9%E6%8A%95%E8%B3%87&amp;src=typed_query&amp;f=top" target="_blank" class="btn btn-x">𝕏 Xで検索</a>
+    </div>
+  </div>
+  <div class="tips-section">
+    <h2>📌 バズ投稿を作る3つのコツ</h2>
+    <ul class="tips">
+      <li><span class="tip-num">1</span><span>冒頭に<strong>「私も〇〇だった」という共感ストーリー</strong>を入れると伸びやすい</span></li>
+      <li><span class="tip-num">2</span><span><strong>具体的な数字</strong>（〇〇円、〇〇%、〇〇万人）を使うとリアリティが増す</span></li>
+      <li><span class="tip-num">3</span><span>最後に<strong>「あなたはどう思いますか？」</strong>と問いかけると返信が増える</span></li>
+    </ul>
+  </div>
+</div>
+<footer>
+  <p>このレポートは自動生成されました。投資は自己責任でお願いします。</p>
+  <p>生成日時: 2026-06-26 08:17</p>
+</footer>
+</body>
+</html>
